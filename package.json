@@ -28,10 +28,11 @@
     "webpack-dev-server": "^3.1.10"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "webpack --mode development",
+    "start": "npm run dev && nodemon bin/www"
   },
   "eslintConfig": {
     "extends": "react-app"

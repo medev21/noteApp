@@ -45,7 +45,7 @@ const config = {
     },
     plugins: [
         new CopyWebpackPlugin([
-            { from: './index.html', to: './index.html' }
+            { from: './client/index.html', to: './index.html' }
         ])
     ]
 }

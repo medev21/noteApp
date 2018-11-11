@@ -6,13 +6,9 @@ const router = require('./routes/routes.js')
 const app = express();
 
 //tells express frontend will reside in client folder
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, '../build')));
 
 //pass in routes from router const
 app.use('/',router)
-
-//listening on port
-app.listen(port);
-console.log('server started');
 
 module.exports=app;
