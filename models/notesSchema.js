@@ -1,10 +1,10 @@
 //notesSchema
 const mongoose = require('mongoose');
-const Schema = mongoose.schema;
+const Schema = mongoose.Schema;
 
 const noteSchema = new Schema({
-    description: string,
-    title: string,
+    description: String,
+    title: String,
     updated: { type: Date, default: Date.now },
     pinned: Boolean
 });
