@@ -46,7 +46,8 @@ const config = {
     plugins: [
         new CopyWebpackPlugin([
             { from: './client/index.html', to: './index.html' }
-        ])
+        ]),
+        new Dotenv()
     ]
 }
 

@@ -32,8 +32,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "webpack --mode development",
-    "start": "npm run dev && nodemon bin/www"
+    "webpack-dev": "webpack --mode development",
+    "start": "npm run webpack-dev && nodemon bin/www"
   },
   "eslintConfig": {
     "extends": "react-app"
