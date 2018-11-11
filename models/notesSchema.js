@@ -8,3 +8,5 @@ const noteSchema = new Schema({
     updated: { type: Date, default: Date.now },
     pinned: Boolean
 });
+
+module.exports = mongoose.model('Notes', noteSchema);
