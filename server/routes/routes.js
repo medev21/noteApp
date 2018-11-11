@@ -12,6 +12,13 @@ router.post("/insert", (req, res) => {
    note.title = req.body.title;
    note.description = req.body.description;
    note.pinned = false; 
+
+   note.save().then(item => {
+        res.send("item saved to database")
+    })
+   .catch(err => {
+       res.status(400).send("unable to save to DB");
+   });
 });
 
 module.exports = router;

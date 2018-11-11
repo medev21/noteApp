@@ -14,7 +14,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //connect to mongoDB
-mongoose.connect(`mongodb://${DBUSER}:${DBPASSWORD}@ds141812.mlab.com:41812/note_app_db`);
+mongoose.connect(`mongodb://${DBUSER}:${DBPASSWORD}@ds141812.mlab.com:41812/note_app_db`, { useNewUrlParser: true });
+
+let conn = mongoose.connection;
+conn.on('error', console.error.bind(console, 'connection:'));
+conn.once('open', () => {
+    console.log('connected to database');
+});
 
 //pass in routes from router const
 app.use('/',router)
