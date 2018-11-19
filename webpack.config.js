@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
@@ -44,11 +45,23 @@ const config = {
             index: 'index.html'
         }
     },
+    // node: {
+    //     fs: 'empty'
+    // },
     plugins: [
         new CopyWebpackPlugin([
             { from: './client/index.html', to: './index.html' }
         ]),
-        new Dotenv()
+        // new Dotenv({
+        //     path: './.env',
+        // }),
+        // new webpack.DefinePlugin({
+		// 	'process.env': {
+        //         NODE_ENV: JSON.stringify("development"),
+		// 		REACT_APP_DBUSER: JSON.stringify(process.env.REACT_APP_DBUSER),
+		// 		REACT_APP_DBPASSWORD: JSON.stringify(process.env.REACT_APP_DBPASSWORD)
+		// 	}
+		// })
     ]
 }
 
