@@ -15,9 +15,6 @@ app.use(express.static(path.join(__dirname, '../build')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-console.log('user', DBUSER);
-console.log('password', DBPASSWORD);
-
 //connect to mongoDB
 mongoose.connect(`mongodb://${DBUSER}:${DBPASSWORD}@ds141812.mlab.com:41812/note_app_db`, { useNewUrlParser: true });
 
