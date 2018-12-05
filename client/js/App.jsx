@@ -8,25 +8,31 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
       title: '',
       description: '',
       pinned: null,
     }
   };
 
-  handleChange = (event) => {
+  handleTitleChange = (event) => {
     console.log(event.target.value);
     this.setState({
-      value: event.target.value
+      title: event.target.value
     });
   };
 
-  insertNewNote = (e) => {
+  handleDescriptionChange = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      description: event.target.value
+    });
+  };
+
+  handleSubmit = (e) => {
     Axios.post('/insert', {
-      title: '',
-      description: '',
-      pinned: false
+      title: this.state.title,
+      description: this.state.description,
+      pinned: this.state.pinned
     }).then(function (response){
       console.log(response);
     }).catch(function(error){
@@ -37,10 +43,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <form>
+        <form onSubmit={this.handleSubmit.bind(this)}>
           <label>
-            <input type="text" value={this.state.value} onChange={this.handleChange.bind(this)}/>
+            title: <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)}/>
           </label>
+          <label>description: <input type="test" value={this.state.description} onChange={this.handleDescriptionChange.bind(this)}/></label>
           <input type="submit"/>
         </form>
       </div>
