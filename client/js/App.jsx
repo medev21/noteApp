@@ -5,13 +5,21 @@ import Add from './components/Add';
 
 class App extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      value: '',
       title: '',
       description: '',
       pinned: null,
     }
+  };
+
+  handleChange = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      value: event.target.value
+    });
   };
 
   insertNewNote = (e) => {
@@ -29,7 +37,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        hello world
+        <form>
+          <label>
+            <input type="text" value={this.state.value} onChange={this.handleChange.bind(this)}/>
+          </label>
+          <input type="submit"/>
+        </form>
       </div>
     );
   }
