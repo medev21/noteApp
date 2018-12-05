@@ -11,7 +11,7 @@ router.post("/insert", (req, res) => {
    let note = new Notes();
    note.title = req.body.title;
    note.description = req.body.description;
-   note.pinned = false; 
+   note.pinned = req.body.pinned; 
 
    note.save().then(item => {
         res.send("item saved to database")

@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       title: '',
       description: '',
-      pinned: null,
+      pinned: false,
     }
   };
 
