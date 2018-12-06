@@ -5,8 +5,9 @@ const router = require('./routes/routes.js')
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-require('dotenv').config();
+const pino = require('express-pino-logger')();
 
+require('dotenv').config();
 const DBUSER = process.env.REACT_APP_DBUSER;
 const DBPASSWORD = process.env.REACT_APP_DBPASSWORD;
 
@@ -14,6 +15,7 @@ const DBPASSWORD = process.env.REACT_APP_DBPASSWORD;
 app.use(express.static(path.join(__dirname, '../build')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(pino);
 
 //connect to mongoDB
 mongoose.connect(`mongodb://${DBUSER}:${DBPASSWORD}@ds141812.mlab.com:41812/note_app_db`, { useNewUrlParser: true });
