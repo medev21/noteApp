@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/App.scss';
 import Axios from 'axios';
+import Apis from './utils/Apis';
 import Add from './components/Add';
 
 class App extends Component {
@@ -18,6 +19,8 @@ class App extends Component {
     this.setState({
       title: event.target.value
     });
+
+    console.log(Apis.getTest());
   };
 
   handleDescriptionChange = (event) => {
