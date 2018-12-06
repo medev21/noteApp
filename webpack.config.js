@@ -19,7 +19,8 @@ const config = {
             exclude: /node_modules/,
             loader: 'babel-loader',
             query: {
-                presets: ['@babel/preset-env', '@babel/react']
+                presets: ['@babel/preset-env', '@babel/react'],
+                plugins: ["transform-class-properties"]
             }
         },
         {
@@ -41,6 +42,10 @@ const config = {
         publicPath: '/',
         contentBase: __dirname + '/build',
         port: 5000,
+        open: true,
+        proxy: {
+            "/api": "http://localhost:5001"
+        },
         historyApiFallback: {
             index: 'index.html'
         }
