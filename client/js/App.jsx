@@ -15,21 +15,19 @@ class App extends Component {
   };
 
   handleTitleChange = (event) => {
-    console.log(event.target.value);
     this.setState({
       title: event.target.value
     });
   };
 
   handleDescriptionChange = (event) => {
-    console.log(event.target.value);
     this.setState({
       description: event.target.value
     });
   };
 
   handleSubmit = (e) => {
-    Axios.post('/insert', {
+    Axios.post('/api/insert', {
       title: this.state.title,
       description: this.state.description,
       pinned: this.state.pinned

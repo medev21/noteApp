@@ -42,6 +42,10 @@ const config = {
         publicPath: '/',
         contentBase: __dirname + '/build',
         port: 5000,
+        open: true,
+        proxy: {
+            "/api": "http://localhost:5001"
+        },
         historyApiFallback: {
             index: 'index.html'
         }

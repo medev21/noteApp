@@ -10,6 +10,7 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^1.0.1",
     "dotenv": "^6.1.0",
@@ -20,6 +21,7 @@
     "mongoose": "^5.3.11",
     "node-sass": "^4.10.0",
     "nodemon": "^1.18.6",
+    "npm": "^6.4.1",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-modal": "^3.6.1",
@@ -27,14 +29,22 @@
     "react-scripts": "2.1.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
   },
   "scripts": {
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "webpack": "webpack --mode development",
-    "dev": "npm run webpack && nodemon bin/www"
+    "server": "nodemon bin/www",
+    "client": "webpack-dev-server --hot --progress --mode development",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "react-scripts start"
+  },
+  "proxy": {
+    "/api/*": {
+      "target": "http://localhost:5001"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
