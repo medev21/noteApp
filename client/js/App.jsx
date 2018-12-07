@@ -43,6 +43,7 @@ class App extends Component {
       description: '',
       pinned: false
     });
+    this.handleGetNotes();
     e.preventDefault();
   };
 
