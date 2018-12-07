@@ -19,8 +19,6 @@ class App extends Component {
     this.setState({
       title: event.target.value
     });
-
-    console.log(Apis.getTest());
   };
 
   handleDescriptionChange = (event) => {
@@ -39,7 +37,18 @@ class App extends Component {
     }).catch((error) => {
       console.log("App.jsx post note error - ", error)
     });
-    
+  };
+
+  handleGetNotes = () => {
+    Apis.getNotes().then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  componentDidMount = () => {
+    this.handleGetNotes();
   };
 
   render() {
