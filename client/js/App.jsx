@@ -12,6 +12,7 @@ class App extends Component {
       title: '',
       description: '',
       pinned: false,
+      notes: [],
     }
   };
 
@@ -41,7 +42,10 @@ class App extends Component {
 
   handleGetNotes = () => {
     Apis.getNotes().then((response) => {
-      console.log(response);
+      console.log(response.data);
+      this.setState({
+        notes: response.data
+      });
     }).catch((error) => {
       console.log(error);
     });
@@ -52,8 +56,21 @@ class App extends Component {
   };
 
   render() {
+
+    let notes = this.state.notes;
     return (
       <div className="App">
+
+        <div>
+          <ul>
+            {notes.map((note, index) => {
+              return(
+                  <li key={index}>{note.title}</li>
+              )
+            })}
+          </ul>
+        </div>
+
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label>
             title: <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)}/>
