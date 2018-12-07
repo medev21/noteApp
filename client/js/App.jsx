@@ -33,10 +33,17 @@ class App extends Component {
     let pinned = this.state.pinned;
 
     Apis.postNote(title, description, pinned).then((response) => {
-      console.log('App.jsx post note success')
+      console.log('App.jsx post note success ', response)
     }).catch((error) => {
       console.log("App.jsx post note error - ", error)
     });
+
+    this.setState({
+      title: '',
+      description: '',
+      pinned: false
+    });
+    e.preventDefault();
   };
 
   handleGetNotes = () => {

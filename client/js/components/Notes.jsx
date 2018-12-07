@@ -1,4 +1,4 @@
-//client/component/Add.jsx
+//client/component/Notes.jsx
 import React from 'react';
 
 class Notes extends React.Component {
