@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import '../css/App.scss';
-import Axios from 'axios';
 import Apis from './utils/Apis';
-import Add from './components/Add';
+import Notes from './components/Notes';
 
 class App extends Component {
 
@@ -42,7 +41,6 @@ class App extends Component {
 
   handleGetNotes = () => {
     Apis.getNotes().then((response) => {
-      console.log(response.data);
       this.setState({
         notes: response.data
       });
@@ -65,7 +63,7 @@ class App extends Component {
           <ul>
             {notes.map((note, index) => {
               return(
-                  <li key={index}>{note.title}</li>
+                  <Notes key={index} note={note}/>
               )
             })}
           </ul>
