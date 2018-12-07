@@ -33,7 +33,7 @@ class App extends Component {
     let pinned = this.state.pinned;
 
     Apis.postNote(title, description, pinned).then((response) => {
-      console.log('App.jsx post note success ', response)
+      console.log('App.jsx post note success ', response)//not outputing...
     }).catch((error) => {
       console.log("App.jsx post note error - ", error)
     });
