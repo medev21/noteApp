@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/App.scss';
 import Axios from 'axios';
+import Apis from './utils/Apis';
 import Add from './components/Add';
 
 class App extends Component {
@@ -18,6 +19,8 @@ class App extends Component {
     this.setState({
       title: event.target.value
     });
+
+    console.log(Apis.getTest());
   };
 
   handleDescriptionChange = (event) => {
@@ -27,15 +30,16 @@ class App extends Component {
   };
 
   handleSubmit = (e) => {
-    Axios.post('/api/insert', {
-      title: this.state.title,
-      description: this.state.description,
-      pinned: this.state.pinned
-    }).then(function (response){
-      console.log(response);
-    }).catch(function(error){
-      console.log('Add.jsx-',error)
+    let title = this.state.title;
+    let description = this.state.description;
+    let pinned = this.state.pinned;
+
+    Apis.postNote(title, description, pinned).then((response) => {
+      console.log('App.jsx post note success')
+    }).catch((error) => {
+      console.log("App.jsx post note error - ", error)
     });
+    
   };
 
   render() {
