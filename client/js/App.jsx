@@ -71,7 +71,7 @@ class App extends Component {
           <ul>
             {notes.map((note, index) => {
               return(
-                  <Notes key={index} note={note}/>
+                  <Notes key={index} note={note} onUpdate={this.handleUpdateNote}/>
               )
             })}
           </ul>
