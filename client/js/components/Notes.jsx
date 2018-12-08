@@ -5,7 +5,7 @@ class Notes extends React.Component {
 
     handleUpdateNote = () => {
         let noteId = this.props.note._id;
-        console.log(noteId)
+        this.props.onUpdate(noteId);
     }
 
     render() {

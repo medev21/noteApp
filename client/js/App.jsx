@@ -55,7 +55,11 @@ class App extends Component {
     }).catch((error) => {
       console.log(error);
     });
-  }
+  };
+
+  handleUpdateNote = (noteId) => {
+    console.log(noteId);
+  };
 
   componentDidMount = () => {
     this.handleGetNotes();
