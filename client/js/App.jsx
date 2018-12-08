@@ -61,6 +61,10 @@ class App extends Component {
     console.log(noteId);
   };
 
+  handleDeleteNote = (noteId) => {
+    console.log(noteId);
+  };
+
   componentDidMount = () => {
     this.handleGetNotes();
   };
@@ -75,7 +79,12 @@ class App extends Component {
           <ul>
             {notes.map((note, index) => {
               return(
-                  <Notes key={index} note={note} onUpdate={this.handleUpdateNote}/>
+                  <Notes 
+                    key={index} 
+                    note={note} 
+                    onUpdate={this.handleUpdateNote} 
+                    onDelete={this.handleDeleteNote}
+                  />
               )
             })}
           </ul>
