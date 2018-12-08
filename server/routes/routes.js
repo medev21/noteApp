@@ -7,6 +7,15 @@ router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '../../build/index.html'));
 });
 
+router.get('/api/getNotes', (req, res) => {
+    Notes.find({}, (err, notes) => {
+        if(err){
+            res.send(err)
+        }
+        res.json(notes);
+    });
+});
+
 router.post("/api/insert", (req, res) => {
    let note = new Notes();
    note.title = req.body.title;

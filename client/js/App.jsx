@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import '../css/App.scss';
-import Axios from 'axios';
 import Apis from './utils/Apis';
-import Add from './components/Add';
+import Notes from './components/Notes';
 
 class App extends Component {
 
@@ -12,6 +11,7 @@ class App extends Component {
       title: '',
       description: '',
       pinned: false,
+      notes: [],
     }
   };
 
@@ -19,8 +19,6 @@ class App extends Component {
     this.setState({
       title: event.target.value
     });
-
-    console.log(Apis.getTest());
   };
 
   handleDescriptionChange = (event) => {
@@ -35,16 +33,50 @@ class App extends Component {
     let pinned = this.state.pinned;
 
     Apis.postNote(title, description, pinned).then((response) => {
-      console.log('App.jsx post note success')
+      console.log('App.jsx post note success ', response)//not outputing...
     }).catch((error) => {
       console.log("App.jsx post note error - ", error)
     });
-    
+
+    this.setState({
+      title: '',
+      description: '',
+      pinned: false
+    });
+    this.handleGetNotes();
+    e.preventDefault();
+  };
+
+  handleGetNotes = () => {
+    Apis.getNotes().then((response) => {
+      this.setState({
+        notes: response.data
+      });
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
+  componentDidMount = () => {
+    this.handleGetNotes();
   };
 
   render() {
+
+    let notes = this.state.notes;
     return (
       <div className="App">
+
+        <div>
+          <ul>
+            {notes.map((note, index) => {
+              return(
+                  <Notes key={index} note={note}/>
+              )
+            })}
+          </ul>
+        </div>
+
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label>
             title: <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)}/>
