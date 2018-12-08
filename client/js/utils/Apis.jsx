@@ -13,7 +13,7 @@ export default {
         });
     },
 
-    postNote: function(title, description, pinned) {
+    postNote: (title, description, pinned) => {
         return new Promise((resolve, reject) => {
             Axios.post('/api/insert', {
                 title: title,
@@ -23,6 +23,17 @@ export default {
                 console.log(response);
             }).catch(function(error){
                 console.log('postNote error -',error)
+            });
+        });
+    },
+
+    updateNote: (noteId) => {
+        const config = {headers: {'Content-Type': 'application/json'}};
+        return new Promise((resolve, reject) => {
+            Axios.put('/api/update', noteId, config).then((response) => {
+                console.log(response);
+            }).catch((error) => {
+                console.log(error);
             });
         });
     },
