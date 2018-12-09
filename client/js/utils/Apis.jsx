@@ -4,7 +4,7 @@ export default {
 
     getNotes: () => {
         return new Promise((resolve, reject) => {
-            Axios.get('/api/getNotes')
+            Axios.get('/api/getnotes')
             .then((response) => {
                 resolve(response)
             }).catch(() => {
@@ -15,7 +15,7 @@ export default {
 
     postNote: (title, description, pinned) => {
         return new Promise((resolve, reject) => {
-            Axios.post('/api/insert', {
+            Axios.post('/api/insertnote', {
                 title: title,
                 description: description,
                 pinned: pinned
@@ -30,7 +30,7 @@ export default {
     updateNote: (noteId) => {
         const config = {headers: {'Content-Type': 'application/json'}};
         return new Promise((resolve, reject) => {
-            Axios.put('/api/update', noteId, config).then((response) => {
+            Axios.put('/api/updatenote', noteId, config).then((response) => {
                 console.log(response);
             }).catch((error) => {
                 console.log(error);
@@ -40,14 +40,12 @@ export default {
 
     deleteNote: (noteId) => {
         return new Promise((resolve, reject) => {
-            Axios.put('/api/delete', ).then((response) => {
+            Axios.delete('/api/deletenote/' + noteId).then((response) => {
                 console.log(response);
             }).catch((error) => {
                 console.log(error);
             });
         });
-    },
-    getTest: function(){
-        return 'hello apis.jsx';
     }
+
 };

@@ -21,7 +21,7 @@ class Notes extends React.Component {
                     <p>{this.props.note.description}</p>
                     <p>{this.props.note.updated}</p>
                     <button type="button" onClick={this.handleUpdateNote}>Update</button>
-                    <button type="button" onClick={this.handleUpdateNote}>Delete</button>
+                    <button type="button" onClick={this.handleDeleteNote}>Delete</button>
                 </div>
             </li>
         );

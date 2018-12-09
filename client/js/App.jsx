@@ -62,7 +62,11 @@ class App extends Component {
   };
 
   handleDeleteNote = (noteId) => {
-    console.log(noteId);
+    Apis.deleteNote(noteId).then((response) => {
+      console.log("success");
+    }).catch((error) => {
+      console.log('error');
+    });
   };
 
   componentDidMount = () => {
