@@ -38,6 +38,15 @@ export default {
         });
     },
 
+    deleteNote: (noteId) => {
+        return new Promise((resolve, reject) => {
+            Axios.put('/api/delete', ).then((response) => {
+                console.log(response);
+            }).catch((error) => {
+                console.log(error);
+            });
+        });
+    },
     getTest: function(){
         return 'hello apis.jsx';
     }
