@@ -63,9 +63,14 @@ class App extends Component {
 
   handleDeleteNote = (noteId) => {
     Apis.deleteNote(noteId).then((response) => {
-      console.log("success");
+      if(response.status === 200){
+        this.handleGetNotes();
+        //add a message
+      }else{
+        console.log("something happened")
+      }
     }).catch((error) => {
-      console.log('error');
+      console.log('error on delete ', error);
     });
   };
 

@@ -31,7 +31,6 @@ router.post("/api/insertnote", (req, res) => {
 });
 
 router.delete('/api/deletenote/:noteId', (req, res) => {
-    console.log(req);
     Notes.remove({_id: req.params.noteId}, (err) => {
         if(!err){
             res.sendStatus(200);

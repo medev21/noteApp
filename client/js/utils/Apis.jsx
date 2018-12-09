@@ -7,7 +7,7 @@ export default {
             Axios.get('/api/getnotes')
             .then((response) => {
                 resolve(response)
-            }).catch(() => {
+            }).catch((error) => {
                 reject(error)
             });
         });
@@ -41,9 +41,9 @@ export default {
     deleteNote: (noteId) => {
         return new Promise((resolve, reject) => {
             Axios.delete('/api/deletenote/' + noteId).then((response) => {
-                console.log(response);
+                resolve(response);
             }).catch((error) => {
-                console.log(error);
+                reject(error)
             });
         });
     }
