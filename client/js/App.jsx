@@ -55,7 +55,24 @@ class App extends Component {
     }).catch((error) => {
       console.log(error);
     });
-  }
+  };
+
+  handleUpdateNote = (noteId) => {
+    console.log(noteId);
+  };
+
+  handleDeleteNote = (noteId) => {
+    Apis.deleteNote(noteId).then((response) => {
+      if(response.status === 200){
+        this.handleGetNotes();
+        //add a message
+      }else{
+        console.log("something happened")
+      }
+    }).catch((error) => {
+      console.log('error on delete ', error);
+    });
+  };
 
   componentDidMount = () => {
     this.handleGetNotes();
@@ -71,7 +88,12 @@ class App extends Component {
           <ul>
             {notes.map((note, index) => {
               return(
-                  <Notes key={index} note={note}/>
+                  <Notes 
+                    key={index} 
+                    note={note} 
+                    onUpdate={this.handleUpdateNote} 
+                    onDelete={this.handleDeleteNote}
+                  />
               )
             })}
           </ul>

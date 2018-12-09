@@ -4,18 +4,18 @@ export default {
 
     getNotes: () => {
         return new Promise((resolve, reject) => {
-            Axios.get('/api/getNotes')
+            Axios.get('/api/getnotes')
             .then((response) => {
                 resolve(response)
-            }).catch(() => {
+            }).catch((error) => {
                 reject(error)
             });
         });
     },
 
-    postNote: function(title, description, pinned) {
+    postNote: (title, description, pinned) => {
         return new Promise((resolve, reject) => {
-            Axios.post('/api/insert', {
+            Axios.post('/api/insertnote', {
                 title: title,
                 description: description,
                 pinned: pinned
@@ -27,7 +27,25 @@ export default {
         });
     },
 
-    getTest: function(){
-        return 'hello apis.jsx';
+    updateNote: (noteId) => {
+        const config = {headers: {'Content-Type': 'application/json'}};
+        return new Promise((resolve, reject) => {
+            Axios.put('/api/updatenote', noteId, config).then((response) => {
+                console.log(response);
+            }).catch((error) => {
+                console.log(error);
+            });
+        });
+    },
+
+    deleteNote: (noteId) => {
+        return new Promise((resolve, reject) => {
+            Axios.delete('/api/deletenote/' + noteId).then((response) => {
+                resolve(response);
+            }).catch((error) => {
+                reject(error)
+            });
+        });
     }
+
 };
