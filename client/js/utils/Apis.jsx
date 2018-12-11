@@ -27,13 +27,13 @@ export default {
         });
     },
 
-    updateNote: (noteId) => {
+    updateNote: (noteId, updatedTitle, updatedDescription, updatedPinned) => {
         const config = {headers: {'Content-Type': 'application/json'}};
         return new Promise((resolve, reject) => {
             Axios.put('/api/updatenote', noteId, config).then((response) => {
-                console.log(response);
+                resolve(response);
             }).catch((error) => {
-                console.log(error);
+                reject(error);
             });
         });
     },

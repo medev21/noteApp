@@ -58,7 +58,12 @@ class App extends Component {
   };
 
   handleUpdateNote = (noteId, updatedTitle, updatedDescription, updatedPinned) => {
-    console.log(noteId, updatedTitle, updatedDescription, updatedPinned);
+    Apis.updateNote(noteId, updatedTitle, updatedDescription, updatedPinned)
+    .then((response) => {
+      console.log(response.status);
+    }).catch((error) => {
+      console.log(error);
+    });
   };
 
   handleDeleteNote = (noteId) => {
