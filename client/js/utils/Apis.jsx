@@ -29,8 +29,13 @@ export default {
 
     updateNote: (noteId, updatedTitle, updatedDescription, updatedPinned) => {
         const config = {headers: {'Content-Type': 'application/json'}};
+        const content = {
+            title: updatedTitle,
+            description: updatedDescription,
+            pinned: updatedPinned
+        };
         return new Promise((resolve, reject) => {
-            Axios.put('/api/updatenote', noteId, config).then((response) => {
+            Axios.put('/api/updatenote', content, config).then((response) => {
                 resolve(response);
             }).catch((error) => {
                 reject(error);
