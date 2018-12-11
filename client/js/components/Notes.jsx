@@ -3,24 +3,49 @@ import React from 'react';
 
 class Notes extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: this.props.note._id,
+            title: this.props.note.title,
+            description: this.props.note.description,
+            pinned: this.props.note.pinned,
+            updated: this.props.note.updated
+        }
+    };
+
+    handleTitle = (event) => {
+        this.setState({
+            title: event.target.value
+        });
+    };
+
+    handleDescription = (event) => {
+        this.setState({
+            description: event.target.value
+        });
+    };
+
     handleUpdateNote = () => {
-        let noteId = this.props.note._id;
-        this.props.onUpdate(noteId);
+        let noteId = this.state.id;
+        let updatedTitle = this.state.title;
+        let updatedDescription = this.state.description;
+        let updatedPinned = this.state.pinned;
+        this.props.onUpdate(noteId, updatedTitle, updatedDescription, updatedPinned);
     }
 
     handleDeleteNote = () => {
-        let noteId = this.props.note._id;
-        this.props.onDelete(noteId);
+        this.props.onDelete(this.state.id);
     }
 
     render() {
         return(
             <li>
                 <div>
-                    <h1>{this.props.note.title}</h1>
-                    <p>{this.props.note.description}</p>
-                    <p>{this.props.note.updated}</p>
-                    <button type="button" onClick={this.handleUpdateNote}>Update</button>
+                    <input onChange={this.handleTitle} value={this.state.title}/>
+                    <input onChange={this.handleDescription} value={this.state.description}/>
+                    <input readOnly value={this.state.updated}/>
+                    <button type="button" onClick={this.handleUpdateNote.bind(this)}>Update</button>
                     <button type="button" onClick={this.handleDeleteNote}>Delete</button>
                 </div>
             </li>

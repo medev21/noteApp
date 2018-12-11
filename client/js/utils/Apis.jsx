@@ -20,20 +20,25 @@ export default {
                 description: description,
                 pinned: pinned
             }).then(function (response){
-                console.log(response);
+                resolve(response);
             }).catch(function(error){
-                console.log('postNote error -',error)
+                reject(error);
             });
         });
     },
 
-    updateNote: (noteId) => {
+    updateNote: (noteId, updatedTitle, updatedDescription, updatedPinned) => {
         const config = {headers: {'Content-Type': 'application/json'}};
+        const content = {
+            title: updatedTitle,
+            description: updatedDescription,
+            pinned: updatedPinned
+        };
         return new Promise((resolve, reject) => {
-            Axios.put('/api/updatenote', noteId, config).then((response) => {
-                console.log(response);
+            Axios.put('/api/updatenote/' + noteId, content, config).then((response) => {
+                resolve(response);
             }).catch((error) => {
-                console.log(error);
+                reject(error);
             });
         });
     },
