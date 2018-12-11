@@ -8,7 +8,7 @@ class Notes extends React.Component {
         this.state = {
             id: this.props.note._id,
             title: this.props.note.title,
-            description: this.props.note.title,
+            description: this.props.note.description,
             pinned: this.props.note.pinned,
             updated: this.props.note.updated
         }

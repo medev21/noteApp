@@ -33,7 +33,9 @@ class App extends Component {
     let pinned = this.state.pinned;
 
     Apis.postNote(title, description, pinned).then((response) => {
-      console.log('App.jsx post note success ', response)//not outputing...
+      if(response.status === 200){
+        this.handleGetNotes();
+      }
     }).catch((error) => {
       console.log("App.jsx post note error - ", error)
     });
@@ -43,7 +45,6 @@ class App extends Component {
       description: '',
       pinned: false
     });
-    this.handleGetNotes();
     e.preventDefault();
   };
 
@@ -60,7 +61,9 @@ class App extends Component {
   handleUpdateNote = (noteId, updatedTitle, updatedDescription, updatedPinned) => {
     Apis.updateNote(noteId, updatedTitle, updatedDescription, updatedPinned)
     .then((response) => {
-      console.log(response.status);
+      if(response.status === 200){
+        this.handleGetNotes();
+      }
     }).catch((error) => {
       console.log(error);
     });
