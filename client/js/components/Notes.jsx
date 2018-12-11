@@ -6,9 +6,9 @@ class Notes extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          title: '',
-          description: '',
-          pinned: false
+          title: this.props.note.title,
+          description: this.props.note.title,
+          pinned: this.props.note.pinned
         }
       };
 
@@ -26,8 +26,8 @@ class Notes extends React.Component {
         return(
             <li>
                 <div>
-                    <input value={this.props.note.title}/>
-                    <input value={this.props.note.description}/>
+                    <input value={this.state.title}/>
+                    <input value={this.state.description}/>
                     <p>{this.props.note.updated}</p>
                     <button type="button" onClick={this.handleUpdateNote}>Update</button>
                     <button type="button" onClick={this.handleDeleteNote}>Delete</button>
