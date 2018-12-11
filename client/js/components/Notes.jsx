@@ -32,8 +32,7 @@ class Notes extends React.Component {
     }
 
     handleDeleteNote = () => {
-        let noteId = this.props.note._id;
-        this.props.onDelete(noteId);
+        this.props.onDelete(this.state.id);
     }
 
     render() {
