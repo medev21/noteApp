@@ -27,8 +27,11 @@ class Notes extends React.Component {
     };
 
     handleUpdateNote = () => {
-        let noteId = this.props.note._id;
-        this.props.onUpdate(noteId);
+        let noteId = this.state.id;
+        let updatedTitle = this.state.title;
+        let updatedDescription = this.state.description;
+        let updatedPinned = this.state.pinned;
+        this.props.onUpdate(noteId, updatedTitle, updatedDescription, updatedPinned);
     }
 
     handleDeleteNote = () => {
@@ -42,7 +45,7 @@ class Notes extends React.Component {
                     <input onChange={this.handleTitle} value={this.state.title}/>
                     <input onChange={this.handleDescription} value={this.state.description}/>
                     <input readOnly value={this.state.updated}/>
-                    <button type="button" onClick={this.handleUpdateNote}>Update</button>
+                    <button type="button" onClick={this.handleUpdateNote.bind(this)}>Update</button>
                     <button type="button" onClick={this.handleDeleteNote}>Delete</button>
                 </div>
             </li>

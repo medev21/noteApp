@@ -57,8 +57,8 @@ class App extends Component {
     });
   };
 
-  handleUpdateNote = (noteId) => {
-    console.log(noteId);
+  handleUpdateNote = (noteId, updatedTitle, updatedDescription, updatedPinned) => {
+    console.log(noteId, updatedTitle, updatedDescription, updatedPinned);
   };
 
   handleDeleteNote = (noteId) => {
