@@ -3,6 +3,15 @@ import React from 'react';
 
 class Notes extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+          title: '',
+          description: '',
+          pinned: false
+        }
+      };
+
     handleUpdateNote = () => {
         let noteId = this.props.note._id;
         this.props.onUpdate(noteId);
@@ -17,8 +26,8 @@ class Notes extends React.Component {
         return(
             <li>
                 <div>
-                    <h1>{this.props.note.title}</h1>
-                    <p>{this.props.note.description}</p>
+                    <input value={this.props.note.title}/>
+                    <input value={this.props.note.description}/>
                     <p>{this.props.note.updated}</p>
                     <button type="button" onClick={this.handleUpdateNote}>Update</button>
                     <button type="button" onClick={this.handleDeleteNote}>Delete</button>
