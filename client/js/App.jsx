@@ -70,6 +70,7 @@ class App extends Component {
   };
 
   handleDeleteNote = (noteId) => {
+    //slice note from note array
     Apis.deleteNote(noteId).then((response) => {
       if(response.status === 200){
         this.handleGetNotes();
