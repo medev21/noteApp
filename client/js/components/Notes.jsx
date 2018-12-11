@@ -6,11 +6,25 @@ class Notes extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          title: this.props.note.title,
-          description: this.props.note.title,
-          pinned: this.props.note.pinned
+            id: this.props.note._id,
+            title: this.props.note.title,
+            description: this.props.note.title,
+            pinned: this.props.note.pinned,
+            updated: this.props.note.updated
         }
-      };
+    };
+
+    handleTitle = (event) => {
+        this.setState({
+            title: event.target.value
+        });
+    };
+
+    handleDescription = (event) => {
+        this.setState({
+            description: event.target.value
+        });
+    };
 
     handleUpdateNote = () => {
         let noteId = this.props.note._id;
@@ -26,9 +40,9 @@ class Notes extends React.Component {
         return(
             <li>
                 <div>
-                    <input value={this.state.title}/>
-                    <input value={this.state.description}/>
-                    <p>{this.props.note.updated}</p>
+                    <input onChange={this.handleTitle} value={this.state.title}/>
+                    <input onChange={this.handleDescription} value={this.state.description}/>
+                    <input readOnly value={this.state.updated}/>
                     <button type="button" onClick={this.handleUpdateNote}>Update</button>
                     <button type="button" onClick={this.handleDeleteNote}>Delete</button>
                 </div>
