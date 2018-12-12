@@ -72,18 +72,20 @@ class App extends Component {
   handleDeleteNote = (noteId, index) => {
     //slice note from note array
     console.log(noteId);
+    // this.state.notes.splice(index,1);
+    console.log(this.state.notes);
 
     //Call DELETE API
-    // Apis.deleteNote(noteId).then((response) => {
-    //   if(response.status === 200){
-    //     this.handleGetNotes();
-    //     //add a message
-    //   }else{
-    //     console.log("something happened")
-    //   }
-    // }).catch((error) => {
-    //   console.log('error on delete ', error);
-    // });
+    Apis.deleteNote(noteId).then((response) => {
+      if(response.status === 200){
+        this.handleGetNotes();
+        //add a message
+      }else{
+        console.log("something happened")
+      }
+    }).catch((error) => {
+      console.log('error on delete ', error);
+    });
   };
 
   componentDidMount = () => {

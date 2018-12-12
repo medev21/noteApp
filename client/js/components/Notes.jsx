@@ -57,16 +57,6 @@ class Notes extends React.Component {
         return(
             <ul>{notes}</ul>
         );
-
-            // <li>
-            //     <div>
-            //         <input onChange={this.handleTitle} value={this.state.title}/>
-            //         <input onChange={this.handleDescription} value={this.state.description}/>
-            //         <input readOnly value={this.state.updated}/>
-            //         <button type="button" onClick={this.handleUpdateNote}>Update</button>
-            //         <button type="button" onClick={this.handleDeleteNote}>Delete</button>
-            //     </div>
-            // </li>
     }
 }
 
