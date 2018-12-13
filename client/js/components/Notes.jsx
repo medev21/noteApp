@@ -3,16 +3,16 @@ import React from 'react';
 
 class Notes extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            id: this.props.note._id,
-            title: this.props.note.title,
-            description: this.props.note.description,
-            pinned: this.props.note.pinned,
-            updated: this.props.note.updated
-        }
-    };
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         id: this.props.note._id,
+    //         title: this.props.note.title,
+    //         description: this.props.note.description,
+    //         pinned: this.props.note.pinned,
+    //         updated: this.props.note.updated
+    //     }
+    // };
 
     handleTitle = (event) => {
         this.setState({
@@ -34,21 +34,28 @@ class Notes extends React.Component {
         this.props.onUpdate(noteId, updatedTitle, updatedDescription, updatedPinned);
     }
 
-    handleDeleteNote = () => {
-        this.props.onDelete(this.state.id);
+    handleDeleteNote = (note, index) => {
+        this.props.onDelete(note._id, index);
     }
 
     render() {
+        let notes = this.props.notes.map((note, index) => {
+            return (
+                // <li key={index}>{note.title}</li>
+                <li key={index}>
+                    <div>
+                        <input onChange={this.handleTitle} value={note.title}/>
+                        <input onChange={this.handleDescription} value={note.description}/>
+                        <input readOnly value={note.updated}/>
+                        <button type="button" onClick={this.handleUpdateNote}>Update</button>
+                        <button type="button" onClick={this.handleDeleteNote.bind(this, note, index)}>Delete</button>
+                    </div>
+                </li>
+            );
+        });
+
         return(
-            <li>
-                <div>
-                    <input onChange={this.handleTitle} value={this.state.title}/>
-                    <input onChange={this.handleDescription} value={this.state.description}/>
-                    <input readOnly value={this.state.updated}/>
-                    <button type="button" onClick={this.handleUpdateNote.bind(this)}>Update</button>
-                    <button type="button" onClick={this.handleDeleteNote}>Delete</button>
-                </div>
-            </li>
+            <ul>{notes}</ul>
         );
     }
 }

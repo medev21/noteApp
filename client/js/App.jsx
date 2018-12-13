@@ -69,8 +69,13 @@ class App extends Component {
     });
   };
 
-  handleDeleteNote = (noteId) => {
+  handleDeleteNote = (noteId, index) => {
     //slice note from note array
+    console.log(noteId);
+    // this.state.notes.splice(index,1);
+    console.log(this.state.notes);
+
+    //Call DELETE API
     Apis.deleteNote(noteId).then((response) => {
       if(response.status === 200){
         this.handleGetNotes();
@@ -94,18 +99,11 @@ class App extends Component {
       <div className="App">
 
         <div>
-          <ul>
-            {notes.map((note, index) => {
-              return(
-                  <Notes 
-                    key={index} 
-                    note={note} 
-                    onUpdate={this.handleUpdateNote} 
-                    onDelete={this.handleDeleteNote}
-                  />
-              )
-            })}
-          </ul>
+          <Notes 
+            notes={this.state.notes} 
+            onUpdate={this.handleUpdateNote} 
+            onDelete={this.handleDeleteNote}
+          />
         </div>
 
         <form onSubmit={this.handleSubmit.bind(this)}>
