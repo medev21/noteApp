@@ -1,6 +1,7 @@
 //client/component/Notes.jsx
 import React from 'react';
 import UpdateNote from './UpdateNote';
+import NoteItem from './NoteItem';
 
 class Notes extends React.Component {
 
@@ -51,13 +52,14 @@ class Notes extends React.Component {
                 {notes.map((note,index) => {
                     return (
                         <li key={index}>
-                            <div>
+                            <NoteItem />
+                            {/* <div>
                                 <input onChange={this.handleTitle} value={note.title}/>
                                 <input onChange={this.handleDescription} value={note.description}/>
                                 <input readOnly value={note.updated}/>
                                 <button type="button" onClick={this.handleUpdateNote}>Update</button>
                                 <button type="button" onClick={this.handleDeleteNote.bind(this,note._id)}>Delete</button>
-                            </div>
+                            </div> */}
                         </li>
                     )
                 })}
