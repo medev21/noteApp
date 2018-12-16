@@ -15,10 +15,6 @@ class Notes extends React.Component {
     //     }
     // };
 
-    handleNote = (note) => {
-        console.log(note);
-    };
-
     handleTitle = (event) => {
         // this.setState({
         //     title: event.target.value
@@ -47,7 +43,6 @@ class Notes extends React.Component {
 
     render() {
         let notes = this.props.notes.map((note, index) => {
-            this.handleNote(note);
             return (
                 // <li key={index}>{note.title}</li>
                 <li key={index}>
@@ -55,7 +50,7 @@ class Notes extends React.Component {
                         <input onChange={this.handleTitle} value={note.title}/>
                         <input onChange={this.handleDescription} value={note.description}/>
                         <input readOnly value={note.updated}/>
-                        <UpdateNote />
+                        <UpdateNote note={note}/>
                         <button type="button" onClick={this.handleUpdateNote}>Update</button>
                         <button type="button" onClick={this.handleDeleteNote.bind(this, note, index)}>Delete</button>
                     </div>
