@@ -99,12 +99,25 @@ class App extends Component {
       <div className="App">
 
         <div>
+          <ul>
+            {notes.map((note,index) => {
+              return(
+                <li key={index}>
+                  <Notes note={note} index={index} onUpdate={this.handleUpdateNote}/>
+                </li>
+              )
+              
+            })}
+          </ul>
+        </div>
+
+        {/* <div>
           <Notes 
             notes={this.state.notes} 
             onUpdate={this.handleUpdateNote} 
             onDelete={this.handleDeleteNote}
           />
-        </div>
+        </div> */}
 
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label>
