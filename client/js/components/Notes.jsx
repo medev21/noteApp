@@ -13,6 +13,8 @@ class Notes extends React.Component {
             pinned: this.props.note.pinned,
             updated: this.props.note.updated
         }
+
+        this.handleDeleteNote.bind(this.state.id);
     };
 
     handleTitle = (event) => {
@@ -35,8 +37,8 @@ class Notes extends React.Component {
         this.props.onUpdate(noteId, updatedTitle, updatedDescription, updatedPinned);
     }
 
-    handleDeleteNote = (note) => {
-        this.props.onDelete(note._id);
+    handleDeleteNote = (id) => {
+        this.props.onDelete(id);
     }
 
     render() {
@@ -46,7 +48,7 @@ class Notes extends React.Component {
                 <input onChange={this.handleDescription} value={this.state.description}/>
                 <input readOnly value={this.state.updated}/>
                 <button type="button" onClick={this.handleUpdateNote}>Update</button>
-                {/* <button type="button" onClick={this.handleDeleteNote.bind(this, index)}>Delete</button> */}
+                <button type="button" onClick={this.handleDeleteNote}>Delete</button>
             </div>
         );
     }
