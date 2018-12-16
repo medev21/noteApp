@@ -1,5 +1,6 @@
 //client/component/Notes.jsx
 import React from 'react';
+import UpdateNote from './UpdateNote';
 
 class Notes extends React.Component {
 
@@ -15,9 +16,11 @@ class Notes extends React.Component {
     // };
 
     handleTitle = (event) => {
-        this.setState({
-            title: event.target.value
-        });
+        // this.setState({
+        //     title: event.target.value
+        // });
+
+        this.props.handleTitleChange(event);
     };
 
     handleDescription = (event) => {
@@ -47,6 +50,7 @@ class Notes extends React.Component {
                         <input onChange={this.handleTitle} value={note.title}/>
                         <input onChange={this.handleDescription} value={note.description}/>
                         <input readOnly value={note.updated}/>
+                        <UpdateNote note={note}/>
                         <button type="button" onClick={this.handleUpdateNote}>Update</button>
                         <button type="button" onClick={this.handleDeleteNote.bind(this, note, index)}>Delete</button>
                     </div>
