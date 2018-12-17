@@ -2,36 +2,18 @@ import React, { Component } from 'react';
 import '../css/App.scss';
 import Apis from './utils/Apis';
 import Notes from './components/Notes';
+import AddNote from './components/AddNote';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      description: '',
-      pinned: false,
       notes: [],
     }
   };
 
-  handleTitleChange = (event) => {
-    this.setState({
-      title: event.target.value
-    });
-  };
-
-  handleDescriptionChange = (event) => {
-    this.setState({
-      description: event.target.value
-    });
-  };
-
-  handleSubmit = (e) => {
-    let title = this.state.title;
-    let description = this.state.description;
-    let pinned = this.state.pinned;
-
+  handleSubmitNote = (event,title,description,pinned) => {
     Apis.postNote(title, description, pinned).then((response) => {
       if(response.status === 200){
         this.handleGetNotes();
@@ -39,13 +21,7 @@ class App extends Component {
     }).catch((error) => {
       console.log("App.jsx post note error - ", error)
     });
-
-    this.setState({
-      title: '',
-      description: '',
-      pinned: false
-    });
-    e.preventDefault();
+    event.preventDefault();
   };
 
   handleGetNotes = () => {
@@ -69,11 +45,14 @@ class App extends Component {
     });
   };
 
-  handleDeleteNote = (noteId) => {
-    //slice note from note array
+  handleDeleteNote = (noteId,index) => {
+    //Call DELETE API
     Apis.deleteNote(noteId).then((response) => {
       if(response.status === 200){
+        this.state.notes.splice(index,1);
+
         this.handleGetNotes();
+        console.log('it has been deleted')
         //add a message
       }else{
         console.log("something happened")
@@ -81,6 +60,7 @@ class App extends Component {
     }).catch((error) => {
       console.log('error on delete ', error);
     });
+
   };
 
   componentDidMount = () => {
@@ -89,32 +69,19 @@ class App extends Component {
 
   render() {
 
-    let notes = this.state.notes;
     return (
       <div className="App">
-
         <div>
-          <ul>
-            {notes.map((note, index) => {
-              return(
-                  <Notes 
-                    key={index} 
-                    note={note} 
-                    onUpdate={this.handleUpdateNote} 
-                    onDelete={this.handleDeleteNote}
-                  />
-              )
-            })}
-          </ul>
+          <Notes 
+            notes={this.state.notes} 
+            onUpdate={this.handleUpdateNote} 
+            onDelete={this.handleDeleteNote}
+          />
         </div>
 
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <label>
-            title: <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)}/>
-          </label>
-          <label>description: <input type="test" value={this.state.description} onChange={this.handleDescriptionChange.bind(this)}/></label>
-          <input type="submit"/>
-        </form>
+        <div>
+          <AddNote submit={this.handleSubmitNote}/>
+        </div>
       </div>
     );
   }
