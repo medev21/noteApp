@@ -3,6 +3,7 @@ import '../css/App.scss';
 import Apis from './utils/Apis';
 import Notes from './components/Notes';
 import AddNote from './components/AddNote';
+import Navbar from './components/Navbar';
 
 class App extends Component {
 
@@ -71,17 +72,13 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div>
-          <Notes 
-            notes={this.state.notes} 
-            onUpdate={this.handleUpdateNote} 
-            onDelete={this.handleDeleteNote}
-          />
-        </div>
-
-        <div>
-          <AddNote submit={this.handleSubmitNote}/>
-        </div>
+        <Navbar />
+        <Notes 
+          notes={this.state.notes} 
+          onUpdate={this.handleUpdateNote} 
+          onDelete={this.handleDeleteNote}
+        />
+        <AddNote submit={this.handleSubmitNote}/>
       </div>
     );
   }

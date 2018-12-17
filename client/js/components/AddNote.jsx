@@ -34,13 +34,15 @@ class Add extends React.Component {
 
     render() {
         return(
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    title: <input type="text" value={this.state.title} onChange={this.handleTitleChange}/>
-                </label>
-                <label>description: <input type="test" value={this.state.description} onChange={this.handleDescriptionChange}/></label>
-                <input type="submit"/>
-            </form>
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        title: <input type="text" value={this.state.title} onChange={this.handleTitleChange}/>
+                    </label>
+                    <label>description: <input type="test" value={this.state.description} onChange={this.handleDescriptionChange}/></label>
+                    <input type="submit"/>
+                </form>
+            </div>
         );
     }
 }
