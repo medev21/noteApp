@@ -5,8 +5,9 @@ class Navbar extends React.Component {
     render(){
 
         return (
-            <div>
-                <h1>This is the navbar section</h1>
+            <div className="navbar">
+                <div className="logoutButton">logout</div>
+                <div className="userInitials">MB</div>
             </div>
             
         );
