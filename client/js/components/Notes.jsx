@@ -1,6 +1,5 @@
 //client/component/Notes.jsx
 import React from 'react';
-import UpdateNote from './UpdateNote';
 import NoteItem from './NoteItem';
 
 class Notes extends React.Component {
