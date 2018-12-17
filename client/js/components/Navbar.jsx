@@ -1,6 +1,6 @@
 import React from 'react';
 
-class UpdateNote extends React.Component {
+class Navbar extends React.Component {
 
     handleUpdateNote = () => {
         console.log('handle update note');
@@ -14,4 +14,4 @@ class UpdateNote extends React.Component {
     }
 }
 
-export default UpdateNote;
+export default Navbar;
