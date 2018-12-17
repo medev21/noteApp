@@ -13,7 +13,7 @@ class App extends Component {
     }
   };
 
-  handleSubmitNote = (e,title,description,pinned) => {
+  handleSubmitNote = (event,title,description,pinned) => {
     Apis.postNote(title, description, pinned).then((response) => {
       if(response.status === 200){
         this.handleGetNotes();
@@ -21,7 +21,7 @@ class App extends Component {
     }).catch((error) => {
       console.log("App.jsx post note error - ", error)
     });
-    e.preventDefault();
+    event.preventDefault();
   };
 
   handleGetNotes = () => {

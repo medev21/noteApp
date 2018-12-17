@@ -25,11 +25,11 @@ class Add extends React.Component {
         });
     };
 
-    handleSubmit = (e) => {
+    handleSubmit = (event) => {
         let title = this.state.title;
         let description = this.state.description;
         let pinned = this.state.pinned;
-        this.props.submit(e,title,description,pinned);
+        this.props.submit(event,title,description,pinned);
     }
 
     render() {
