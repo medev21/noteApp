@@ -5,7 +5,6 @@ class NoteItem extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            index: this.props.index,
             id: this.props.note._id,
             title: this.props.note.title,
             description: this.props.note.description,
@@ -37,7 +36,7 @@ class NoteItem extends React.Component{
     };
 
     handleDeleteNote = () => {
-        this.props.onDelete(this.state.id,this.state.index);
+        this.props.onDelete(this.state.id);
     }
 
     render() {
