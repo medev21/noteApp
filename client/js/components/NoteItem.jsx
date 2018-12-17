@@ -17,8 +17,6 @@ class NoteItem extends React.Component{
         this.setState({
             title: event.target.value
         });
-
-        console.log(event.target.value);
     };
 
     handleDescription = (event) => {

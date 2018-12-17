@@ -9,42 +9,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      description: '',
-      pinned: false,
       notes: [],
     }
   };
 
-  handleTitleChange = (event) => {
-    this.setState({
-      title: event.target.value
-    });
-  };
-
-  handleDescriptionChange = (event) => {
-    this.setState({
-      description: event.target.value
-    });
-  };
-
-  handleSubmit = (e) => {
-    let title = this.state.title;
-    let description = this.state.description;
-    let pinned = this.state.pinned;
-
+  handleSubmitNote = (e,title,description,pinned) => {
     Apis.postNote(title, description, pinned).then((response) => {
       if(response.status === 200){
         this.handleGetNotes();
       }
     }).catch((error) => {
       console.log("App.jsx post note error - ", error)
-    });
-
-    this.setState({
-      title: '',
-      description: '',
-      pinned: false
     });
     e.preventDefault();
   };
@@ -71,8 +46,6 @@ class App extends Component {
   };
 
   handleDeleteNote = (noteId,index) => {
-    //slice note from note array
-
     //Call DELETE API
     Apis.deleteNote(noteId).then((response) => {
       if(response.status === 200){
@@ -96,7 +69,6 @@ class App extends Component {
 
   render() {
 
-    let notes = this.state.notes;
     return (
       <div className="App">
         <div>
@@ -108,16 +80,8 @@ class App extends Component {
         </div>
 
         <div>
-          <AddNote />
+          <AddNote submit={this.handleSubmitNote}/>
         </div>
-
-        {/* <form onSubmit={this.handleSubmit.bind(this)}>
-          <label>
-            title: <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)}/>
-          </label>
-          <label>description: <input type="test" value={this.state.description} onChange={this.handleDescriptionChange.bind(this)}/></label>
-          <input type="submit"/>
-        </form> */}
       </div>
     );
   }

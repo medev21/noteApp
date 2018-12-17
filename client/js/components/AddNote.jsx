@@ -4,9 +4,44 @@ import {Link} from 'react-router-dom';
 
 class Add extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+          title: '',
+          description: '',
+          pinned: false
+        }
+        this.handleSubmit.bind(this);
+      };
+
+    handleTitleChange = (event) => {
+        this.setState({
+            title: event.target.value
+        });
+    };
+
+    handleDescriptionChange = (event) => {
+        this.setState({
+            description: event.target.value
+        });
+    };
+
+    handleSubmit = (e) => {
+        let title = this.state.title;
+        let description = this.state.description;
+        let pinned = this.state.pinned;
+        this.props.submit(e,title,description,pinned);
+    }
+
     render() {
         return(
-            <h1>this is the add jsx file</h1>
+            <form onSubmit={this.handleSubmit}>
+                <label>
+                    title: <input type="text" value={this.state.title} onChange={this.handleTitleChange}/>
+                </label>
+                <label>description: <input type="test" value={this.state.description} onChange={this.handleDescriptionChange}/></label>
+                <input type="submit"/>
+            </form>
         );
     }
 }

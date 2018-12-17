@@ -9,7 +9,7 @@ class Notes extends React.Component {
         let notes = this.props.notes;
         return (
             <ul>
-                {notes.map((note,index) => {
+                {notes.map((note) => {
                     return (
                         <li key={note._id}>
                             <NoteItem 
