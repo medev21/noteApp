@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../css/App.scss';
 import Apis from './utils/Apis';
 import Notes from './components/Notes';
+import AddNote from './components/AddNote';
 
 class App extends Component {
 
@@ -106,13 +107,17 @@ class App extends Component {
           />
         </div>
 
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <div>
+          <AddNote />
+        </div>
+
+        {/* <form onSubmit={this.handleSubmit.bind(this)}>
           <label>
             title: <input type="text" value={this.state.title} onChange={this.handleTitleChange.bind(this)}/>
           </label>
           <label>description: <input type="test" value={this.state.description} onChange={this.handleDescriptionChange.bind(this)}/></label>
           <input type="submit"/>
-        </form>
+        </form> */}
       </div>
     );
   }
