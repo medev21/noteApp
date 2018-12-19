@@ -6,6 +6,12 @@ import '../../css/Notes.scss';
 
 class Notes extends React.Component {
 
+    constructor(){
+        this.state = {
+            showAddModal: false
+        }
+    }
+
     render() {
         let notes = this.props.notes;
         return (
