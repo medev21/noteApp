@@ -6,11 +6,11 @@ import '../../css/Notes.scss';
 
 class Notes extends React.Component {
 
-    constructor(){
-        this.state = {
-            showAddModal: false
-        }
-    }
+    // constructor(){
+    //     this.state = {
+    //         showAddModal: false
+    //     }
+    // }
 
     render() {
         let notes = this.props.notes;
@@ -32,7 +32,7 @@ class Notes extends React.Component {
                     </ul>
                 </div>
 
-                <Modal />
+                {/* <Modal /> */}
 
                 <div className="addNoteSection">
                     +
