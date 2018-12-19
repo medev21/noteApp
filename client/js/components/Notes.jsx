@@ -1,6 +1,7 @@
 //client/component/Notes.jsx
 import React from 'react';
 import NoteItem from './NoteItem';
+import Modal from './Modal';
 import '../../css/Notes.scss';
 
 class Notes extends React.Component {
@@ -24,6 +25,8 @@ class Notes extends React.Component {
                         })}
                     </ul>
                 </div>
+
+                <Modal />
 
                 <div className="addNoteSection">
                     +
