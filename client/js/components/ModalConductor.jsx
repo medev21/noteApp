@@ -5,10 +5,10 @@ import UpdateModal from './UpdateModal';
 
 const ModalConductor = props => {
   switch (props.currentModal) {
-    case 'EXPORT_DATA':
+    case 'CREATE_NOTE':
       return <CreateModal {...props}/>;
 
-    case 'SOCIAL_SIGN_IN':
+    case 'UPDATE_NOTE':
       return <UpdateModal {...props}/>;
 
     default:
