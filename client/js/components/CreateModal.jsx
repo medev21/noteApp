@@ -3,6 +3,10 @@ import '../../css/Modal.scss'
 
 class CreateModal extends React.Component {
 
+    handleCloseModal = () => {
+        this.props.close();
+    }
+
     render(){
         const showHideClassName = this.props.show ? "modal display-block" : "modal display-none";
 
@@ -10,6 +14,10 @@ class CreateModal extends React.Component {
             <div className={showHideClassName}>
                 <div className="modal-main">
                     <p>this is the create Modal</p>
+                </div>
+
+                <div className="" onClick={this.handleCloseModal}>
+                    X
                 </div>
             </div>
         );

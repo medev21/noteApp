@@ -23,6 +23,12 @@ class Notes extends React.Component {
         });
     };
 
+    handleCloseModal = () => {
+        this.setState({
+            modalName: null
+        });
+    };
+
     render() {
         let notes = this.props.notes;
         return (
@@ -51,7 +57,7 @@ class Notes extends React.Component {
 
                 <ModalConductor 
                     show={this.state.showAddModal} 
-                    close={this.handleModalToggle} 
+                    close={this.handleCloseModal} 
                     modalName={this.state.modalName}
                 />
             </div>
