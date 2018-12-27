@@ -30,6 +30,11 @@ class Add extends React.Component {
         let description = this.state.description;
         let pinned = this.state.pinned;
         this.props.submit(event,title,description,pinned);
+        this.setState({
+            title: '',
+            description: '',
+            pinned: false
+        });
     }
 
     render() {
