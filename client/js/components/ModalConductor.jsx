@@ -4,6 +4,7 @@ import CreateModal from './CreateModal';
 // import UpdateModal from './UpdateModal';
 
 const ModalConductor = props => {
+    console.log(props);
   switch (props.modalName) {
     case 'CREATE_NOTE':
         console.log('create note');

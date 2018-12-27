@@ -11,13 +11,15 @@ class Notes extends React.Component {
         super(props);
         this.state = {
             showAddModal: false,
-            modalName: 'CREATE_NOTE'
+            modalName: null
         }
     }
 
     handleShowModal = () => {
+        console.log('showing modal');
         this.setState({
-            showAddModal: true
+            showAddModal: true,
+            modalName: "CREATE_NOTE"
         });
     };
 
@@ -50,7 +52,7 @@ class Notes extends React.Component {
                 <ModalConductor 
                     show={this.state.showAddModal} 
                     close={this.handleModalToggle} 
-                    modalName={this.modalName}
+                    modalName={this.state.modalName}
                 />
             </div>
             
