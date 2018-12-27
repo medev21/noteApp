@@ -7,17 +7,19 @@ import ModalConductor from './ModalConductor';
 
 class Notes extends React.Component {
 
-    constructor(){
+    constructor(props){
+        super(props);
         this.state = {
-            showAddModal: false
+            showAddModal: false,
+            modalName: 'CREATE_NOTE'
         }
     }
 
-    handleModalToggle = () => {
+    handleShowModal = () => {
         this.setState({
             showAddModal: true
         });
-    }
+    };
 
     render() {
         let notes = this.props.notes;
@@ -41,11 +43,15 @@ class Notes extends React.Component {
 
                 {/* <Modal /> */}
 
-                <div className="addNoteSection">
+                <div className="addNoteSection" onClick={this.handleShowModal}>
                     +
                 </div>
 
-                <ModalConductor show={this.state.showAddModal} close={this.handleModalToggle}/>
+                <ModalConductor 
+                    show={this.state.showAddModal} 
+                    close={this.handleModalToggle} 
+                    modalName={this.modalName}
+                />
             </div>
             
         );
