@@ -1,16 +1,35 @@
 //client/component/Notes.jsx
 import React from 'react';
 import NoteItem from './NoteItem';
-import Modal from './Modal';
+import Modal from './CreateModal';
 import '../../css/Notes.scss';
+import ModalConductor from './ModalConductor';
 
 class Notes extends React.Component {
 
-    // constructor(){
-    //     this.state = {
-    //         showAddModal: false
-    //     }
-    // }
+    constructor(props){
+        super(props);
+        this.state = {
+            modalName: null
+        }
+    }
+
+    handleShowModal = () => {
+        this.setState({
+            modalName: "CREATE_NOTE"
+        });
+    };
+
+    handleCloseModal = () => {
+        this.setState({
+            modalName: null
+        });
+    };
+
+    handleSubmit = (event,title,description,pinned) => {
+        console.log(this.props);
+        this.props.submit(event,title,description,pinned);
+    }
 
     render() {
         let notes = this.props.notes;
@@ -34,9 +53,15 @@ class Notes extends React.Component {
 
                 {/* <Modal /> */}
 
-                <div className="addNoteSection">
+                <div className="addNoteSection" onClick={this.handleShowModal}>
                     +
                 </div>
+
+                <ModalConductor 
+                    close={this.handleCloseModal} 
+                    modalName={this.state.modalName}
+                    submit={this.handleSubmit}
+                />
             </div>
             
         );

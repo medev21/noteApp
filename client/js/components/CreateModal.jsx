@@ -1,7 +1,7 @@
-//client/component/Add.jsx
 import React from 'react';
+import ModalWrapper from './ModalWrapper';
 
-class Add extends React.Component {
+class CreateModal extends React.Component {
 
     constructor(props) {
         super(props);
@@ -26,9 +26,12 @@ class Add extends React.Component {
     };
 
     handleSubmit = (event) => {
+        console.log('hey');
+        event.preventDefault();
         let title = this.state.title;
         let description = this.state.description;
         let pinned = this.state.pinned;
+        console.log(this.props);
         this.props.submit(event,title,description,pinned);
         this.setState({
             title: '',
@@ -37,9 +40,10 @@ class Add extends React.Component {
         });
     }
 
-    render() {
+    render(){
+
         return(
-            <div>
+            <ModalWrapper close={this.props.close}>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         title: <input type="text" value={this.state.title} onChange={this.handleTitleChange}/>
@@ -47,9 +51,10 @@ class Add extends React.Component {
                     <label>description: <input type="test" value={this.state.description} onChange={this.handleDescriptionChange}/></label>
                     <input type="submit"/>
                 </form>
-            </div>
+            </ModalWrapper>
         );
     }
+
 }
 
-export default Add;
+export default CreateModal;

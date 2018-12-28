@@ -77,8 +77,9 @@ class App extends Component {
           notes={this.state.notes} 
           onUpdate={this.handleUpdateNote} 
           onDelete={this.handleDeleteNote}
+          submit={this.handleSubmitNote}
         />
-        <AddNote submit={this.handleSubmitNote}/>
+        {/* <AddNote submit={this.handleSubmitNote}/> */}
       </div>
     );
   }

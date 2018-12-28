@@ -1,18 +1,19 @@
 import React from 'react';
 
-import CreateModal from './CreateModal.jsx';
-import UpdateModal from './UpdateModal';
+import CreateModal from './CreateModal';
+// import UpdateModal from './UpdateModal';
 
 const ModalConductor = props => {
-  switch (props.currentModal) {
+    console.log(props);
+  switch (props.modalName) {
     case 'CREATE_NOTE':
-      return <CreateModal {...props}/>;
+        return <CreateModal {...props}/>;
 
     case 'UPDATE_NOTE':
-      return <UpdateModal {...props}/>;
+        return <UpdateModal {...props}/>;
 
     default:
-      return null;
+        return null;
   }
 };
 
