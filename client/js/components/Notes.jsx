@@ -33,8 +33,8 @@ class Notes extends React.Component {
     render() {
         let notes = this.props.notes;
         return (
-            <div className="noteListSection">
-                <div>
+            <div className="notesContainer">
+                <div className="notesSection">
                     <ul>
                         {notes.map((note) => {
                             return (
@@ -50,9 +50,7 @@ class Notes extends React.Component {
                     </ul>
                 </div>
 
-                {/* <Modal /> */}
-
-                <div className="addNoteSection" onClick={this.handleShowModal}>
+                <div className="addButtonSection" onClick={this.handleShowModal}>
                     +
                 </div>
 
