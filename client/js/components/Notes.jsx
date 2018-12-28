@@ -27,7 +27,7 @@ class Notes extends React.Component {
     };
 
     handleSubmit = (event,title,description,pinned) => {
-        console.log(this.props);
+        this.handleCloseModal();
         this.props.submit(event,title,description,pinned);
     }
 
