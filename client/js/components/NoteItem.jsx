@@ -39,7 +39,7 @@ class NoteItem extends React.Component{
 
     render() {
         return(
-            <div>
+            <div className="noteCard">
                 <input onChange={this.handleTitle} value={this.state.title}/>
                 <input onChange={this.handleDescription} value={this.state.description}/>
                 <input readOnly value={this.state.updated}/>
