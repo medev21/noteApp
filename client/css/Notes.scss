@@ -1,5 +1,8 @@
 div.notesContainer{
     overflow: auto;
+    width: 998px; /*temp*/
+    margin: 100px auto 0;
+
     .notesSection{
         ul{
             li{
@@ -14,6 +17,8 @@ div.notesContainer{
                     border-radius: 8px;
                 }
             }
+
+            li:nth-child(4n){ margin-right: 0px; }
         }
     }
     .addButtonSection{
