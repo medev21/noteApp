@@ -7,7 +7,6 @@ const ModalConductor = props => {
     console.log(props);
   switch (props.modalName) {
     case 'CREATE_NOTE':
-        console.log('create note');
         return <CreateModal {...props}/>;
 
     case 'UPDATE_NOTE':

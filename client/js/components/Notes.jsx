@@ -26,6 +26,11 @@ class Notes extends React.Component {
         });
     };
 
+    handleSubmit = (event,title,description,pinned) => {
+        console.log(this.props);
+        this.props.submit(event,title,description,pinned);
+    }
+
     render() {
         let notes = this.props.notes;
         return (
@@ -55,6 +60,7 @@ class Notes extends React.Component {
                 <ModalConductor 
                     close={this.handleCloseModal} 
                     modalName={this.state.modalName}
+                    submit={this.handleSubmit}
                 />
             </div>
             
