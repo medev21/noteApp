@@ -1,7 +1,6 @@
 //client/component/Notes.jsx
 import React from 'react';
 import NoteItem from './NoteItem';
-import Modal from './CreateModal';
 import '../../css/Notes.scss';
 import ModalConductor from './ModalConductor';
 
