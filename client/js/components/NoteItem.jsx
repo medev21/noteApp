@@ -40,8 +40,21 @@ class NoteItem extends React.Component{
     render() {
         return(
             <div className="noteCard">
-                <h4>{this.state.title}</h4>
-                <p>{this.state.description}</p>
+                <div className="header">
+
+                </div>
+                <div className="body">
+                    <div className="titleSection">
+                        <h4>{this.state.title}</h4>
+                    </div>
+                    <div className="descriptionSection">
+                        <p>{this.state.description}</p>
+                    </div>
+                </div>
+                <div className="footer">
+
+                </div>
+                
                 {/* <input readOnly value={this.state.updated}/> */}
                 {/* <input onChange={this.handleTitle} value={this.state.title}/>
                 <input onChange={this.handleDescription} value={this.state.description}/>
