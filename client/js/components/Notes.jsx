@@ -1,7 +1,6 @@
 //client/component/Notes.jsx
 import React from 'react';
 import NoteItem from './NoteItem';
-import Modal from './CreateModal';
 import '../../css/Notes.scss';
 import ModalConductor from './ModalConductor';
 
@@ -27,15 +26,15 @@ class Notes extends React.Component {
     };
 
     handleSubmit = (event,title,description,pinned) => {
-        console.log(this.props);
+        this.handleCloseModal();
         this.props.submit(event,title,description,pinned);
     }
 
     render() {
         let notes = this.props.notes;
         return (
-            <div className="noteListSection">
-                <div>
+            <div className="notesContainer">
+                <div className="notesSection">
                     <ul>
                         {notes.map((note) => {
                             return (
@@ -51,9 +50,7 @@ class Notes extends React.Component {
                     </ul>
                 </div>
 
-                {/* <Modal /> */}
-
-                <div className="addNoteSection" onClick={this.handleShowModal}>
+                <div className="addButtonSection" onClick={this.handleShowModal}>
                     +
                 </div>
 
