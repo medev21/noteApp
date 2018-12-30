@@ -1,4 +1,5 @@
 import React from 'react';
+import FontAwesome from "react-fontawesome";
 
 class NoteItem extends React.Component{
 
