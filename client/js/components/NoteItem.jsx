@@ -1,5 +1,9 @@
 import React from 'react';
-import FontAwesome from "react-fontawesome";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faThumbtack } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faTrash, faThumbtack)
 
 class NoteItem extends React.Component{
 
@@ -42,7 +46,7 @@ class NoteItem extends React.Component{
         return(
             <div className="noteCard">
                 <div className="header">
-
+                    <FontAwesomeIcon icon='thumbtack' size="1x"/>
                 </div>
                 <div className="body">
                     <div className="titleSection">
@@ -53,7 +57,7 @@ class NoteItem extends React.Component{
                     </div>
                 </div>
                 <div className="footer">
-
+                    <FontAwesomeIcon icon='trash' size="1x"/>
                 </div>
                 
                 {/* <input readOnly value={this.state.updated}/> */}
