@@ -23,6 +23,13 @@ div.notesContainer{
                         line-height: 40px;
                         padding-right: 15px;
                     }
+                    
+                    div.body{
+                        padding: 0 15px 0;
+                        div.titleSection{
+                            margin-bottom: 5px;
+                        }
+                    }
 
                     div.footer{
                         position: absolute;
