@@ -57,7 +57,7 @@ class NoteItem extends React.Component{
                     </div>
                 </div>
                 <div className="footer">
-                    <FontAwesomeIcon icon='trash' size="1x"/>
+                    <FontAwesomeIcon icon='trash' size="1x" onClick={this.handleDeleteNote}/>
                 </div>
                 
                 {/* <input readOnly value={this.state.updated}/> */}
