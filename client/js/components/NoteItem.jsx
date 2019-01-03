@@ -43,6 +43,16 @@ class NoteItem extends React.Component{
     }
 
     render() {
+
+        const isPinned = this.state.pinned;
+        let pinIcon;
+
+        if(isPinned){
+            pinIcon = <FontAwesomeIcon icon='thumbtack' size="1x"/>;
+        }else{
+            pinIcon = null;
+        }
+
         return(
             <div className="noteCard">
                 <div className="header">
