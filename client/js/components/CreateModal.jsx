@@ -25,6 +25,13 @@ class CreateModal extends React.Component {
         });
     };
 
+    handlePinnedChange = (event) => {
+        event.preventDefault();
+        this.setState({
+            pinned: !this.state.pinned
+        });
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
         let title = this.state.title;
@@ -47,7 +54,7 @@ class CreateModal extends React.Component {
                         title: <input type="text" value={this.state.title} onChange={this.handleTitleChange}/>
                     </label>
                     <label>description: <input type="test" value={this.state.description} onChange={this.handleDescriptionChange}/></label>
-                    <div><button>pinned this</button></div>
+                    <div><button onClick={this.handlePinnedChange}>pinned this</button></div>
                     <input type="submit"/>
                 </form>
             </ModalWrapper>
