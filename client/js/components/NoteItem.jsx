@@ -56,7 +56,7 @@ class NoteItem extends React.Component{
         return(
             <div className="noteCard">
                 <div className="header">
-                    <FontAwesomeIcon icon='thumbtack' size="1x"/>
+                    {pinIcon}
                 </div>
                 <div className="body">
                     <div className="titleSection">
