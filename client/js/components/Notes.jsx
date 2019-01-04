@@ -38,6 +38,23 @@ class Notes extends React.Component {
 
         if(pinned){
             console.log("it is not empty");
+            pinSection = 
+                <div>
+                    <ul>
+                        {pinned.map((note) => {
+                            return (
+                                <li key={note._id}>
+                                    <NoteItem 
+                                        note={note} 
+                                        onUpdate={this.props.onUpdate} 
+                                        onDelete={this.props.onDelete}
+                                    />
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
+            ;
         }else{
             pinSection = null;
         }
@@ -47,8 +64,9 @@ class Notes extends React.Component {
         return (
             <div className="notesContainer">
                 <div className="notesSection">
+                    {pinSection}
                     <ul>
-                        {notes.map((note) => {
+                        {other.map((note) => {
                             return (
                                 <li key={note._id}>
                                     <NoteItem 
