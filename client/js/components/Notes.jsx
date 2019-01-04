@@ -32,6 +32,11 @@ class Notes extends React.Component {
 
     render() {
         let notes = this.props.notes;
+        let pinned = notes.filter(note => note.pinned == true);
+        let other = notes.filter(note => note.pinned == false);
+
+        console.log("pinned", pinned);
+        console.log("other", other);
         return (
             <div className="notesContainer">
                 <div className="notesSection">
