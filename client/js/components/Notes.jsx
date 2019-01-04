@@ -34,6 +34,13 @@ class Notes extends React.Component {
         let notes = this.props.notes;
         let pinned = notes.filter(note => note.pinned == true);
         let other = notes.filter(note => note.pinned == false);
+        let pinSection;
+
+        if(pinned){
+            console.log("it is not empty");
+        }else{
+            pinSection = null;
+        }
 
         console.log("pinned", pinned);
         console.log("other", other);
