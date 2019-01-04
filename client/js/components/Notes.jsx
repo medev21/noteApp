@@ -37,9 +37,9 @@ class Notes extends React.Component {
         let pinSection;
 
         if(pinned){
-            console.log("it is not empty");
             pinSection = 
                 <div>
+                    <h5>pinned</h5>
                     <ul>
                         {pinned.map((note) => {
                             return (
@@ -65,19 +65,22 @@ class Notes extends React.Component {
             <div className="notesContainer">
                 <div className="notesSection">
                     {pinSection}
-                    <ul>
-                        {other.map((note) => {
-                            return (
-                                <li key={note._id}>
-                                    <NoteItem 
-                                        note={note} 
-                                        onUpdate={this.props.onUpdate} 
-                                        onDelete={this.props.onDelete}
-                                    />
-                                </li>
-                            )
-                        })}
-                    </ul>
+                    <div>
+                        <h5 className={`(pinned ? 'showHeader' ? 'hideHeader' )`}>other</h5>
+                        <ul>
+                            {other.map((note) => {
+                                return (
+                                    <li key={note._id}>
+                                        <NoteItem 
+                                            note={note} 
+                                            onUpdate={this.props.onUpdate} 
+                                            onDelete={this.props.onDelete}
+                                        />
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
                 </div>
 
                 <div className="addButtonSection" onClick={this.handleShowModal}>
