@@ -38,7 +38,7 @@ class Notes extends React.Component {
 
         if(pinned){
             pinSection = 
-                <div>
+                <div className="pinnedSection">
                     <h5>pinned</h5>
                     <ul>
                         {pinned.map((note) => {
@@ -65,7 +65,7 @@ class Notes extends React.Component {
             <div className="notesContainer">
                 <div className="notesSection">
                     {pinSection}
-                    <div>
+                    <div className="otherSection">
                         <h5 className={`(pinned ? 'showHeader' ? 'hideHeader' )`}>other</h5>
                         <ul>
                             {other.map((note) => {

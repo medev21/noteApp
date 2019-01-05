@@ -4,6 +4,7 @@ div.notesContainer{
     margin: 100px auto 0;
 
     .notesSection{
+        overflow: auto;
         ul{
             li{
                 float: left;
@@ -52,6 +53,15 @@ div.notesContainer{
             }
 
             li:nth-child(4n){ margin-right: 0px; }
+        }
+
+        div.pinnedSection, div.otherSection{
+            overflow: auto;
+        }
+
+        div.otherSection{
+            div.showHeader{display: block;}
+            div.hideHeader{display: none;}
         }
     }
     .addButtonSection{
