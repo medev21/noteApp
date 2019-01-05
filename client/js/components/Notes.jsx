@@ -36,7 +36,7 @@ class Notes extends React.Component {
         let other = notes.filter(note => note.pinned == false);
         let pinSection;
 
-        if(pinned){
+        if(pinned.length != 0){
             pinSection = 
                 <div className="pinnedSection">
                     <h5>pinned</h5>
@@ -58,7 +58,6 @@ class Notes extends React.Component {
         }else{
             pinSection = null;
         }
-
         console.log("pinned", pinned);
         console.log("other", other);
         return (
