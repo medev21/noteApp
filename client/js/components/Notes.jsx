@@ -65,7 +65,7 @@ class Notes extends React.Component {
                 <div className="notesSection">
                     {pinSection}
                     <div className="otherSection">
-                        <h5 className={`(pinned ? 'showHeader' ? 'hideHeader' )`}>other</h5>
+                        <h5 className={pinned.length != 0 ? 'showHeader' : 'hideHeader'}>other</h5>
                         <ul>
                             {other.map((note) => {
                                 return (
