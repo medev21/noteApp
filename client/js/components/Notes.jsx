@@ -32,11 +32,16 @@ class Notes extends React.Component {
 
     render() {
         let notes = this.props.notes;
-        return (
-            <div className="notesContainer">
-                <div className="notesSection">
+        let pinned = notes.filter(note => note.pinned == true);
+        let other = notes.filter(note => note.pinned == false);
+        let pinSection;
+
+        if(pinned.length != 0){
+            pinSection = 
+                <div className="pinnedSection">
+                    <h5>pinned</h5>
                     <ul>
-                        {notes.map((note) => {
+                        {pinned.map((note) => {
                             return (
                                 <li key={note._id}>
                                     <NoteItem 
@@ -48,6 +53,33 @@ class Notes extends React.Component {
                             )
                         })}
                     </ul>
+                </div>
+            ;
+        }else{
+            pinSection = null;
+        }
+        console.log("pinned", pinned);
+        console.log("other", other);
+        return (
+            <div className="notesContainer">
+                <div className="notesSection">
+                    {pinSection}
+                    <div className="otherSection">
+                        <h5 className={pinned.length != 0 ? 'showHeader' : 'hideHeader'}>other</h5>
+                        <ul>
+                            {other.map((note) => {
+                                return (
+                                    <li key={note._id}>
+                                        <NoteItem 
+                                            note={note} 
+                                            onUpdate={this.props.onUpdate} 
+                                            onDelete={this.props.onDelete}
+                                        />
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
                 </div>
 
                 <div className="addButtonSection" onClick={this.handleShowModal}>
