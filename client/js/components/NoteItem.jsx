@@ -48,7 +48,7 @@ class NoteItem extends React.Component{
         let pinIcon;
 
         if(isPinned){
-            pinIcon = <FontAwesomeIcon icon='thumbtack' size="1x"/>;
+            pinIcon = <FontAwesomeIcon transform="rotate-45" icon={['fa', 'thumbtack']} size="1x"/>;
         }else{
             pinIcon = null;
         }
