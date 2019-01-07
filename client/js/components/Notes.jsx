@@ -34,10 +34,10 @@ class Notes extends React.Component {
         let notes = this.props.notes;
         let pinned = notes.filter(note => note.pinned == true);
         let other = notes.filter(note => note.pinned == false);
-        let pinSection;
+        let pinnedSection;
 
         if(pinned.length != 0){
-            pinSection = 
+            pinnedSection = 
                 <div className="pinnedSection">
                     <h5>pinned</h5>
                     <ul>
@@ -56,14 +56,14 @@ class Notes extends React.Component {
                 </div>
             ;
         }else{
-            pinSection = null;
+            pinnedSection = null;
         }
         console.log("pinned", pinned);
         console.log("other", other);
         return (
             <div className="notesContainer">
                 <div className="notesSection">
-                    {pinSection}
+                    {pinnedSection}
                     <div className="otherSection">
                         <h5 className={pinned.length != 0 ? 'showHeader' : 'hideHeader'}>other</h5>
                         <ul>
