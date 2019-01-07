@@ -31,11 +31,12 @@ class ModalWrapper extends React.Component{
             <div className="modal display-block">
                 <div className="modal-main" ref={node => {this.node = node;}}>
                     {this.props.children}
+                    <div className="" onClick={this.handleCloseModal}>
+                        X
+                    </div>
                 </div>
 
-                <div className="" onClick={this.handleCloseModal}>
-                    X
-                </div>
+                
             </div>
         );
     };
