@@ -45,18 +45,11 @@ class NoteItem extends React.Component{
     render() {
 
         const isPinned = this.state.pinned;
-        let pinIcon;
-
-        if(isPinned){
-            pinIcon = <FontAwesomeIcon transform="rotate-45" icon={['fa', 'thumbtack']} size="1x"/>;
-        }else{
-            pinIcon = null;
-        }
 
         return(
             <div className="noteCard">
                 <div className="header">
-                    {pinIcon}
+                    <FontAwesomeIcon transform={isPinned ? "rotate-0" : "rotate-45"} icon={['fa', 'thumbtack']} size="1x"/>
                 </div>
                 <div className="body">
                     <div className="titleSection">
