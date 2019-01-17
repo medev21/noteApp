@@ -8,16 +8,15 @@ class ModalWrapper extends React.Component{
     };
 
     componentWillMount() {
-        document.addEventListener('click', this.handleClick, false);
+        document.addEventListener('mousedown', this.handleClick, false);
     };
 
     componentWillUnmount() {
-        document.removeEventListener('click', this.handleClick, false);
+        document.removeEventListener('mousedown', this.handleClick, false);
     };
 
     handleClick = (e) => {
         if(this.node.contains(e.target)){
-            console.log('this is the node')
             //the click is inside the main modal
             return;
         }
@@ -30,13 +29,10 @@ class ModalWrapper extends React.Component{
         return(
             <div className="modal display-block">
                 <div className="modal-main" ref={node => {this.node = node;}}>
-                    {this.props.children}
-                    <div className="" onClick={this.handleCloseModal}>
-                        X
+                    <div className="createFormSection">
+                        {this.props.children}
                     </div>
-                </div>
-
-                
+                </div>                
             </div>
         );
     };

@@ -2,9 +2,9 @@ import React from 'react';
 import ModalWrapper from './ModalWrapper';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbtack } from '@fortawesome/free-solid-svg-icons'
+import { faThumbtack, faPlus } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faThumbtack)
+library.add(faThumbtack, faPlus)
 
 class CreateModal extends React.Component {
 
@@ -16,7 +16,7 @@ class CreateModal extends React.Component {
           pinned: false
         }
         this.handleSubmit.bind(this);
-        this.handlePinnedChange.bind(this);
+        // this.handlePinnedChange.bind(this);
       };
 
     handleTitleChange = (event) => {
@@ -57,18 +57,17 @@ class CreateModal extends React.Component {
         return(
             <ModalWrapper close={this.props.close}>
                 <form onSubmit={this.handleSubmit}>
-                    <div>
-                        {/* <button onClick={this.handlePinnedChange}>pinned this</button> */}
+                    <div className="pinSection">
                         <button onClick={this.handlePinnedChange}><FontAwesomeIcon transform={isPinned ? "rotate-0" : "rotate-45"} icon="thumbtack" size="1x"/></button>
                     </div>
-                    <div>
+                    <div className="titleSection">
                         <input type="text" placeholder="title" value={this.state.title} onChange={this.handleTitleChange}/>
                     </div>
-                    <div>
-                        <input type="test" placeholder="description" value={this.state.description} onChange={this.handleDescriptionChange}/>
+                    <div className="descriptionSection">
+                        <textarea type="text" placeholder="description" value={this.state.description} onChange={this.handleDescriptionChange}/>
                     </div>
-                    <div>
-                        <input type="submit"/>
+                    <div className="submitSection">
+                        <button type="submit"><FontAwesomeIcon icon="plus" size="1x"/></button>
                     </div>
                 </form>
             </ModalWrapper>
