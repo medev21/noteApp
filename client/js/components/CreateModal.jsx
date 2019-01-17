@@ -2,9 +2,9 @@ import React from 'react';
 import ModalWrapper from './ModalWrapper';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbtack } from '@fortawesome/free-solid-svg-icons'
+import { faThumbtack, faPlus } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faThumbtack)
+library.add(faThumbtack, faPlus)
 
 class CreateModal extends React.Component {
 
@@ -64,10 +64,11 @@ class CreateModal extends React.Component {
                         <input type="text" placeholder="title" value={this.state.title} onChange={this.handleTitleChange}/>
                     </div>
                     <div className="descriptionSection">
-                        <input type="test" placeholder="description" value={this.state.description} onChange={this.handleDescriptionChange}/>
+                        <textarea type="text" placeholder="description" value={this.state.description} onChange={this.handleDescriptionChange}/>
                     </div>
                     <div className="submitSection">
-                        <input type="submit"/>
+                        <button onClick={this.handlePinnedChange}><FontAwesomeIcon icon="plus" size="1x"/></button>
+                        {/* <input type="submit"/> */}
                     </div>
                 </form>
             </ModalWrapper>

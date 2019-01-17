@@ -22,7 +22,7 @@
       padding: 30px 30px 0;
       form{
 
-        input, button{
+        input, button,textarea{
           border: none;
           background-color:#FFF;
           font-size: 20px;
@@ -48,6 +48,17 @@
         .pinSection{
           text-align: right;
           button{font-size: 25px;}
+        }
+
+        .descriptionSection{
+          textarea{
+            width: 100%;
+          }
+        }
+        
+        .submitSection{
+          text-align: right;
+          margin-top: 50px;
         }
       }
     }
