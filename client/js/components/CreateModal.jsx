@@ -67,8 +67,7 @@ class CreateModal extends React.Component {
                         <textarea type="text" placeholder="description" value={this.state.description} onChange={this.handleDescriptionChange}/>
                     </div>
                     <div className="submitSection">
-                        <button onClick={this.handlePinnedChange}><FontAwesomeIcon icon="plus" size="1x"/></button>
-                        {/* <input type="submit"/> */}
+                        <button type="submit"><FontAwesomeIcon icon="plus" size="1x"/></button>
                     </div>
                 </form>
             </ModalWrapper>
