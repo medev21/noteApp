@@ -5,7 +5,7 @@ class UpdateModal extends React.Component{
 
     render(){
         return(
-            <ModalWrapper>
+            <ModalWrapper close={this.props.close}>
                 <h1>Hello world</h1>
             </ModalWrapper>
         );

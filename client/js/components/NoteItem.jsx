@@ -24,6 +24,12 @@ class NoteItem extends React.Component{
         this.setState({modalName: "UPDATE_NOTE"});
     };
 
+    handleCloseModal = () => {
+        this.setState({
+            modalName: null
+        });
+    };
+
     handleTitle = (event) => {
         this.setState({
             title: event.target.value
