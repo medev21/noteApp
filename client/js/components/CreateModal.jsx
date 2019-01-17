@@ -57,17 +57,16 @@ class CreateModal extends React.Component {
         return(
             <ModalWrapper close={this.props.close}>
                 <form onSubmit={this.handleSubmit}>
-                    <div>
-                        {/* <button onClick={this.handlePinnedChange}>pinned this</button> */}
-                        <button onClick={this.handlePinnedChange}><FontAwesomeIcon transform={isPinned ? "rotate-0" : "rotate-45"} icon="thumbtack" size="1x"/></button>
+                    <div className="pinSection">
+                        <button onClick={this.handlePinnedChange}><FontAwesomeIcon transform={isPinned ? "rotate-0" : "rotate-45"} icon="thumbtack" size="2x"/></button>
                     </div>
-                    <div>
+                    <div className="titleSection">
                         <input type="text" placeholder="title" value={this.state.title} onChange={this.handleTitleChange}/>
                     </div>
-                    <div>
+                    <div className="descriptionSection">
                         <input type="test" placeholder="description" value={this.state.description} onChange={this.handleDescriptionChange}/>
                     </div>
-                    <div>
+                    <div className="submitSection">
                         <input type="submit"/>
                     </div>
                 </form>

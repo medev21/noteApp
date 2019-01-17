@@ -30,7 +30,9 @@ class ModalWrapper extends React.Component{
         return(
             <div className="modal display-block">
                 <div className="modal-main" ref={node => {this.node = node;}}>
-                    {this.props.children}
+                    <div className="createFormSection">
+                        {this.props.children}
+                    </div>
                     <div className="" onClick={this.handleCloseModal}>
                         X
                     </div>
