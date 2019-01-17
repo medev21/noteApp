@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CreateModal from './CreateModal';
-// import UpdateModal from './UpdateModal';
+import UpdateModal from './UpdateModal';
 
 const ModalConductor = props => {
     console.log(props);
