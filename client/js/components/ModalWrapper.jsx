@@ -8,11 +8,11 @@ class ModalWrapper extends React.Component{
     };
 
     componentWillMount() {
-        document.addEventListener('click', this.handleClick, false);
+        document.addEventListener('mousedown', this.handleClick, false);
     };
 
     componentWillUnmount() {
-        document.removeEventListener('click', this.handleClick, false);
+        document.removeEventListener('mousedown', this.handleClick, false);
     };
 
     handleClick = (e) => {

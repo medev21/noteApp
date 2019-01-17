@@ -16,7 +16,7 @@ class CreateModal extends React.Component {
           pinned: false
         }
         this.handleSubmit.bind(this);
-        this.handlePinnedChange.bind(this);
+        // this.handlePinnedChange.bind(this);
       };
 
     handleTitleChange = (event) => {
@@ -32,6 +32,7 @@ class CreateModal extends React.Component {
     };
 
     handlePinnedChange = (event) => {
+        console.log("i am being pinned");
         event.preventDefault();
         this.setState({
             pinned: !this.state.pinned
