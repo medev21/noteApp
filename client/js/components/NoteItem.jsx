@@ -1,4 +1,5 @@
 import React from 'react';
+import ModalConductor from './ModalConductor';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faThumbtack } from '@fortawesome/free-solid-svg-icons'
@@ -14,8 +15,13 @@ class NoteItem extends React.Component{
             title: this.props.note.title,
             description: this.props.note.description,
             pinned: this.props.note.pinned,
-            updated: this.props.note.updated
+            updated: this.props.note.updated,
+            modalName: null
         }
+    };
+
+    handleShowModal = () => {
+        this.setState({modalName: "UPDATE_NOTE"});
     };
 
     handleTitle = (event) => {
@@ -47,7 +53,7 @@ class NoteItem extends React.Component{
         const isPinned = this.state.pinned;
 
         return(
-            <div className="noteCard">
+            <div className="noteCard" onClick={this.handleShowModal}>
                 <div className="header">
                     <FontAwesomeIcon transform={isPinned ? "rotate-0" : "rotate-45"} icon={['fa', 'thumbtack']} size="1x"/>
                 </div>
@@ -69,6 +75,12 @@ class NoteItem extends React.Component{
                 <input readOnly value={this.state.updated}/>
                 <button type="button" onClick={this.handleUpdateNote}>Update</button>
                 <button type="button" onClick={this.handleDeleteNote}>Delete</button> */}
+
+                <ModalConductor 
+                    close={this.handleCloseModal} 
+                    modalName={this.state.modalName}
+                    submit={this.handleSubmit}
+                />
             </div>
         )
     }
