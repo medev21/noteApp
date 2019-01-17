@@ -17,7 +17,6 @@ class ModalWrapper extends React.Component{
 
     handleClick = (e) => {
         if(this.node.contains(e.target)){
-            console.log('this is the node')
             //the click is inside the main modal
             return;
         }

@@ -32,7 +32,6 @@ class CreateModal extends React.Component {
     };
 
     handlePinnedChange = (event) => {
-        console.log("i am being pinned");
         event.preventDefault();
         this.setState({
             pinned: !this.state.pinned
