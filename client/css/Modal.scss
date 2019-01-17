@@ -25,13 +25,29 @@
         input, button{
           border: none;
           background-color:#FFF;
+          font-size: 20px;
         }
+
+        ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+          color: grey;
+        }
+        ::-moz-placeholder { /* Firefox 19+ */
+          color: grey;
+        }
+        :-ms-input-placeholder { /* IE 10+ */
+          color: grey;
+        }
+        :-moz-placeholder { /* Firefox 18- */
+          color: grey;
+        }
+
         div{
           height: 50px;
           line-height: 50px;
         }
         .pinSection{
           text-align: right;
+          button{font-size: initial;}
         }
       }
     }
