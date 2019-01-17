@@ -32,9 +32,7 @@ class ModalWrapper extends React.Component{
                     <div className="createFormSection">
                         {this.props.children}
                     </div>
-                </div>
-
-                
+                </div>                
             </div>
         );
     };
