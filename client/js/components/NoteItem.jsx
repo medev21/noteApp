@@ -30,25 +30,25 @@ class NoteItem extends React.Component{
         });
     };
 
-    handleTitle = (event) => {
-        this.setState({
-            title: event.target.value
-        });
-    };
+    // handleTitle = (event) => {
+    //     this.setState({
+    //         title: event.target.value
+    //     });
+    // };
 
-    handleDescription = (event) => {
-        this.setState({
-            description: event.target.value
-        });
-    };
+    // handleDescription = (event) => {
+    //     this.setState({
+    //         description: event.target.value
+    //     });
+    // };
 
-    handleUpdateNote = () => {
-        let noteId = this.state.id;
-        let updatedTitle = this.state.title;
-        let updatedDescription = this.state.description;
-        let updatedPinned = this.state.pinned;
-        this.props.onUpdate(noteId, updatedTitle, updatedDescription, updatedPinned);
-    };
+    // handleUpdateNote = () => {
+    //     let noteId = this.state.id;
+    //     let updatedTitle = this.state.title;
+    //     let updatedDescription = this.state.description;
+    //     let updatedPinned = this.state.pinned;
+    //     this.props.onUpdate(noteId, updatedTitle, updatedDescription, updatedPinned);
+    // };
 
     handleDeleteNote = () => {
         this.props.onDelete(this.state.id);
@@ -85,6 +85,7 @@ class NoteItem extends React.Component{
                 <ModalConductor 
                     close={this.handleCloseModal} 
                     modalName={this.state.modalName}
+                    note={this.props.note}
                     submit={this.handleSubmit}
                 />
             </div>
