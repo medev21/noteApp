@@ -50,9 +50,17 @@ class NoteItem extends React.Component{
     //     this.props.onUpdate(noteId, updatedTitle, updatedDescription, updatedPinned);
     // };
 
-    handleDeleteNote = () => {
+    handleUpdatePin = (e) => {
+        //this stops from parent modal to be enabled - stopPropagation
+        e.stopPropagation();
+        console.log('updating pin....')
+    };
+
+    handleDeleteNote = (e) => {
+        //this stops from parent modal to be enabled - stopPropagation
+        e.stopPropagation();
         this.props.onDelete(this.state.id);
-    }
+    };
 
     render() {
 
@@ -61,7 +69,12 @@ class NoteItem extends React.Component{
         return(
             <div className="noteCard" onClick={this.handleShowModal}>
                 <div className="header">
-                    <FontAwesomeIcon transform={isPinned ? "rotate-0" : "rotate-45"} icon={['fa', 'thumbtack']} size="1x"/>
+                    <FontAwesomeIcon 
+                        transform={isPinned ? "rotate-0" : "rotate-45"} 
+                        icon={['fa', 'thumbtack']} 
+                        size="1x" 
+                        onClick={this.handleUpdatePin}
+                    />
                 </div>
                 <div className="body">
                     <div className="titleSection">
