@@ -30,31 +30,16 @@ class NoteItem extends React.Component{
         });
     };
 
-    // handleTitle = (event) => {
-    //     this.setState({
-    //         title: event.target.value
-    //     });
-    // };
-
-    // handleDescription = (event) => {
-    //     this.setState({
-    //         description: event.target.value
-    //     });
-    // };
-
-    // handleUpdateNote = () => {
-    //     let noteId = this.state.id;
-    //     let updatedTitle = this.state.title;
-    //     let updatedDescription = this.state.description;
-    //     let updatedPinned = this.state.pinned;
-    //     this.props.onUpdate(noteId, updatedTitle, updatedDescription, updatedPinned);
-    // };
-
     handleUpdatePin = (e) => {
         //this stops from parent modal to be enabled - stopPropagation
         e.stopPropagation();
         console.log('updating pin....')
         // this.setState({pinned: !this.state.pinned});
+        let noteId = this.state.id;
+        let updatedTitle = this.state.title;
+        let updatedDescription = this.state.description;
+        let updatedPinned = !this.state.pinned;
+        this.handleUpdate(noteId, updatedTitle, updatedDescription, updatedPinned);
     };
 
     handleUpdate = (noteId, updatedTitle, updatedDescription, updatedPinned) => {
