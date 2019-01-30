@@ -33,8 +33,7 @@ class NoteItem extends React.Component{
     handleUpdatePin = (e) => {
         //this stops from parent modal to be enabled - stopPropagation
         e.stopPropagation();
-        console.log('updating pin....')
-        // this.setState({pinned: !this.state.pinned});
+        //refactor this part
         let noteId = this.state.id;
         let updatedTitle = this.state.title;
         let updatedDescription = this.state.description;
