@@ -58,8 +58,8 @@ class Notes extends React.Component {
         }else{
             pinnedSection = null;
         }
-        console.log("pinned", pinned);
-        console.log("other", other);
+        // console.log("pinned", pinned);
+        // console.log("other", other);
         return (
             <div className="notesContainer">
                 <div className="notesSection">

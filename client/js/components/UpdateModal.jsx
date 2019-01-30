@@ -1,5 +1,10 @@
 import React from 'react';
 import ModalWrapper from './ModalWrapper';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbtack, faPlus } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faThumbtack, faPlus)
 
 class UpdateModal extends React.Component{
 
@@ -14,30 +19,53 @@ class UpdateModal extends React.Component{
         }
     };
 
-    handleTitle = (event) => {
+    handleTitleUpdate = (event) => {
         this.setState({
             title: event.target.value
         });
     };
 
-    handleDescription = (event) => {
+    handleDescriptionUpdate = (event) => {
         this.setState({
             description: event.target.value
         });
     };
+
+    handlePinnedUpdate = (event) => {
+        event.preventDefault();
+        this.setState({
+            pinned: !this.state.pinned
+        });
+    }
 
     handleUpdateNote = () => {
         let noteId = this.state.id;
         let updatedTitle = this.state.title;
         let updatedDescription = this.state.description;
         let updatedPinned = this.state.pinned;
-        this.props.onUpdate(noteId, updatedTitle, updatedDescription, updatedPinned);
+        this.props.update(noteId, updatedTitle, updatedDescription, updatedPinned);
     };
 
     render(){
+        const isPinned = this.state.pinned;
+
         return(
             <ModalWrapper close={this.props.close}>
-                <p>{this.props.note.title}</p>
+                {/* <p>{this.props.note.title}</p> */}
+                <form onSubmit={this.handleUpdateNote}>
+                    <div className="pinSection">
+                        <button onClick={this.handlePinnedUpdate}><FontAwesomeIcon transform={isPinned ? "rotate-0" : "rotate-45"} icon="thumbtack" size="1x"/></button>
+                    </div>
+                    <div className="titleSection">
+                        <input type="text" value={this.state.title} onChange={this.handleTitleUpdate}/>
+                    </div>
+                    <div className="descriptionSection">
+                        <textarea type="text" value={this.state.description} onChange={this.handleDescriptionUpdate}/>
+                    </div>
+                    <div className="submitSection">
+                        <button type="submit"><FontAwesomeIcon icon="plus" size="1x"/></button>
+                    </div>
+                </form>
             </ModalWrapper>
         );
     }
