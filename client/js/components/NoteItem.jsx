@@ -54,6 +54,11 @@ class NoteItem extends React.Component{
         //this stops from parent modal to be enabled - stopPropagation
         e.stopPropagation();
         console.log('updating pin....')
+        // this.setState({pinned: !this.state.pinned});
+    };
+
+    handleUpdate = (noteId, updatedTitle, updatedDescription, updatedPinned) => {
+        this.props.onUpdate(noteId, updatedTitle, updatedDescription, updatedPinned);
     };
 
     handleDeleteNote = (e) => {
@@ -99,7 +104,7 @@ class NoteItem extends React.Component{
                     close={this.handleCloseModal} 
                     modalName={this.state.modalName}
                     note={this.props.note}
-                    submit={this.handleSubmit}
+                    update={this.handleUpdate}
                 />
             </div>
         )
