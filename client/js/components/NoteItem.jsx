@@ -3,7 +3,6 @@ import ModalConductor from './ModalConductor';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faThumbtack } from '@fortawesome/free-solid-svg-icons'
-import ReactTooltip from 'react-tooltip';
 import Tooltip from './Tooltip';
 
 library.add(faTrash, faThumbtack)
