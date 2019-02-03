@@ -18,7 +18,8 @@ class NoteItem extends React.Component{
             description: this.props.note.description,
             pinned: this.props.note.pinned,
             updated: this.props.note.updated,
-            modalName: null
+            modalName: null,
+            tooltipBool: false
         }
     };
 
@@ -53,22 +54,32 @@ class NoteItem extends React.Component{
         this.props.onDelete(this.state.id);
     };
 
+    handleShowToolTip = () => {
+        console.log("hovering over icon");
+        this.setState({tooltipBool: true});
+    };
+
     render() {
 
         const isPinned = this.state.pinned;
-        // const tooltipMsg = this.state.pinned ? "Unpin this note" : "Pin this note";
+        const tooltipStatus = this.state.tooltipBool
+        let tooltip;
+
+        if(tooltipStatus){
+            tooltip = <Tooltip pinBool={isPinned}/>
+        }
 
         return(
             <div className="noteCard" onClick={this.handleShowModal}>
                 <div className="header">
-                    <Tooltip pinBool={isPinned}>
-                    </Tooltip>
+                    {tooltip}
                     <FontAwesomeIcon 
                         transform={isPinned ? "rotate-0" : "rotate-45"} 
                         icon={['fa', 'thumbtack']} 
                         size="1x" 
                         onClick={this.handleUpdatePin} 
-                    
+                        onMouseOver={this.handleShowToolTip} 
+                        onMouseOut={this.handleCloseToolTip}
                     >
                     </FontAwesomeIcon>                  
                 </div>
