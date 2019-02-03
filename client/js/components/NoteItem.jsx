@@ -3,6 +3,8 @@ import ModalConductor from './ModalConductor';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faThumbtack } from '@fortawesome/free-solid-svg-icons'
+import ReactTooltip from 'react-tooltip';
+import Tooltip from './Tooltip';
 
 library.add(faTrash, faThumbtack)
 
@@ -54,16 +56,21 @@ class NoteItem extends React.Component{
     render() {
 
         const isPinned = this.state.pinned;
+        // const tooltipMsg = this.state.pinned ? "Unpin this note" : "Pin this note";
 
         return(
             <div className="noteCard" onClick={this.handleShowModal}>
                 <div className="header">
+                    <Tooltip pinBool={isPinned}>
+                    </Tooltip>
                     <FontAwesomeIcon 
                         transform={isPinned ? "rotate-0" : "rotate-45"} 
                         icon={['fa', 'thumbtack']} 
                         size="1x" 
-                        onClick={this.handleUpdatePin}
-                    />
+                        onClick={this.handleUpdatePin} 
+                    
+                    >
+                    </FontAwesomeIcon>                  
                 </div>
                 <div className="body">
                     <div className="titleSection">
@@ -77,13 +84,6 @@ class NoteItem extends React.Component{
                     <FontAwesomeIcon icon='trash' size="1x" onClick={this.handleDeleteNote}/>
                 </div>
                 
-                {/* <input readOnly value={this.state.updated}/> */}
-                {/* <input onChange={this.handleTitle} value={this.state.title}/>
-                <input onChange={this.handleDescription} value={this.state.description}/>
-                <input readOnly value={this.state.updated}/>
-                <button type="button" onClick={this.handleUpdateNote}>Update</button>
-                <button type="button" onClick={this.handleDeleteNote}>Delete</button> */}
-
                 <ModalConductor 
                     close={this.handleCloseModal} 
                     modalName={this.state.modalName}
