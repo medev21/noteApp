@@ -80,9 +80,9 @@ div.notesContainer{
                     }
                 }
 
-                // div.noteCard div.header, div.noteCard div.footer{
-                //     visibility: hidden;
-                // }
+                div.noteCard div.header, div.noteCard div.footer{
+                    visibility: hidden;
+                }
 
                 div.noteCard:hover .header, div.noteCard:hover .footer{
                     visibility: visible;
