@@ -3,6 +3,7 @@ import ModalConductor from './ModalConductor';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faThumbtack } from '@fortawesome/free-solid-svg-icons'
+import Tooltip from './Tooltip';
 
 library.add(faTrash, faThumbtack)
 
@@ -16,7 +17,8 @@ class NoteItem extends React.Component{
             description: this.props.note.description,
             pinned: this.props.note.pinned,
             updated: this.props.note.updated,
-            modalName: null
+            modalName: null,
+            tooltipBool: false
         }
     };
 
@@ -51,19 +53,37 @@ class NoteItem extends React.Component{
         this.props.onDelete(this.state.id);
     };
 
+    handleShowTooltip = () => {
+        this.setState({tooltipBool: true});
+    };
+
+    handleCloseTooltip = () => {
+        this.setState({tooltipBool: false});
+    };
+
     render() {
 
         const isPinned = this.state.pinned;
+        const tooltipStatus = this.state.tooltipBool
+        let tooltip;
+
+        if(tooltipStatus){
+            tooltip = <Tooltip pinBool={isPinned}/>
+        }
 
         return(
             <div className="noteCard" onClick={this.handleShowModal}>
                 <div className="header">
+                    {tooltip}
                     <FontAwesomeIcon 
                         transform={isPinned ? "rotate-0" : "rotate-45"} 
                         icon={['fa', 'thumbtack']} 
                         size="1x" 
-                        onClick={this.handleUpdatePin}
-                    />
+                        onClick={this.handleUpdatePin} 
+                        onMouseOver={this.handleShowTooltip} 
+                        onMouseOut={this.handleCloseTooltip}
+                    >
+                    </FontAwesomeIcon>                  
                 </div>
                 <div className="body">
                     <div className="titleSection">
@@ -77,13 +97,6 @@ class NoteItem extends React.Component{
                     <FontAwesomeIcon icon='trash' size="1x" onClick={this.handleDeleteNote}/>
                 </div>
                 
-                {/* <input readOnly value={this.state.updated}/> */}
-                {/* <input onChange={this.handleTitle} value={this.state.title}/>
-                <input onChange={this.handleDescription} value={this.state.description}/>
-                <input readOnly value={this.state.updated}/>
-                <button type="button" onClick={this.handleUpdateNote}>Update</button>
-                <button type="button" onClick={this.handleDeleteNote}>Delete</button> */}
-
                 <ModalConductor 
                     close={this.handleCloseModal} 
                     modalName={this.state.modalName}
