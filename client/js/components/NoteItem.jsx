@@ -54,9 +54,12 @@ class NoteItem extends React.Component{
         this.props.onDelete(this.state.id);
     };
 
-    handleShowToolTip = () => {
-        console.log("hovering over icon");
+    handleShowTooltip = () => {
         this.setState({tooltipBool: true});
+    };
+
+    handleCloseTooltip = () => {
+        this.setState({tooltipBool: false});
     };
 
     render() {
@@ -78,8 +81,8 @@ class NoteItem extends React.Component{
                         icon={['fa', 'thumbtack']} 
                         size="1x" 
                         onClick={this.handleUpdatePin} 
-                        onMouseOver={this.handleShowToolTip} 
-                        onMouseOut={this.handleCloseToolTip}
+                        onMouseOver={this.handleShowTooltip} 
+                        onMouseOut={this.handleCloseTooltip}
                     >
                     </FontAwesomeIcon>                  
                 </div>
