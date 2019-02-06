@@ -1,11 +1,13 @@
 //server.js
 const express = require('express');
 const path = require('path');
-const router = require('./routes/routes.js')
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
+
+const router = require('./routes/routes.js');
+const userRouter = require('./routes/userRoutes');
 
 require('dotenv').config();
 const DBUSER = process.env.REACT_APP_DBUSER;
@@ -27,6 +29,7 @@ conn.once('open', () => {
 });
 
 //pass in routes from router const
-app.use('/',router)
+app.use('/',router);
+app.use('/users', userRouter);
 
 module.exports=app;
