@@ -12,6 +12,7 @@
     "axios": "^0.18.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "bcrypt": "^3.0.3",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
     "copy-webpack-plugin": "^4.6.0",
