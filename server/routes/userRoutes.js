@@ -35,6 +35,21 @@ router.post('/signup', (req, res, next) => {
     });    
 });
 
+router.post('/login', (req,res,next) => {
+    User.findOne({email: req.body.email})
+    .exec()
+    .then(user => {
+        res.status(200).json({
+            message: 'Auth Success'
+        });
+    })
+    .catch(err => {
+        res.status(500).json({
+            error: err
+        });
+    })
+});
+
 router.delete('/:userId', (req,res,next) => {
     User.deleteOne({_id: req.params.userId})
     .exec()
