@@ -23,6 +23,7 @@
     "express": "^4.16.4",
     "express-pino-logger": "^4.0.0",
     "file-loader": "^2.0.0",
+    "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.3.11",
     "node-sass": "^4.10.0",
     "nodemon": "^1.18.6",
