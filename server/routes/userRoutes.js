@@ -58,13 +58,14 @@ router.post('/login', (req,res,next) => {
                     email: user.email,
                     userId: user._id
                 },
-                process.env.JWTKEY,
+                process.env.JWT_KEY,
                 {
                     expiresIn: "1h"
                 });
 
                 return res.status(200).json({
-                    message: 'Auth Success'
+                    message: 'Auth Success',
+                    token: token
                 });
             }
 
