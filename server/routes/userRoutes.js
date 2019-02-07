@@ -39,9 +39,16 @@ router.post('/login', (req,res,next) => {
     User.findOne({email: req.body.email})
     .exec()
     .then(user => {
+        if(!user){
+            return res.status(401).json({
+                message: 'Auth Failed'
+            });
+        }
+
         res.status(200).json({
             message: 'Auth Success'
         });
+        
     })
     .catch(err => {
         res.status(500).json({
