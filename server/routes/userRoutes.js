@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const User = require('../../models/usersScherma');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 //user signup route
 router.post('/signup', (req, res, next) => {
@@ -45,9 +46,34 @@ router.post('/login', (req,res,next) => {
             });
         }
 
-        res.status(200).json({
-            message: 'Auth Success'
-        });
+        bcrypt.compare(req.body.password, user.password, (err,result) => {
+            if(err){
+                return res.status(401).json({
+                    message: 'Auth Failed'
+                });
+            }
+
+            if(result){
+                const token = jwt.sign({
+                    email: user.email,
+                    userId: user._id
+                },
+                process.env.JWTKEY,
+                {
+                    expiresIn: "1h"
+                });
+
+                return res.status(200).json({
+                    message: 'Auth Success'
+                });
+            }
+
+            res.status(401).json({
+                message: 'Auth Failed'
+            })
+        })
+
+        
         
     })
     .catch(err => {
