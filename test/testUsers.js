@@ -30,6 +30,8 @@ describe('Users', () => {
             .send(user)
             .end((err,res) => {
                 res.should.have.status(201);
+                res.body.should.have.be.an('Object');
+                res.body.should.have.property('message').eql('User created!');
                 done();
             });
         });
