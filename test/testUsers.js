@@ -2,6 +2,7 @@ const User = require('../models/usersScherma');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../server/server');
+const should = chai.should();
 
 chai.use(chaiHttp);
 
@@ -26,6 +27,7 @@ describe('Users', () => {
             .send(user)
             .end((err,res) => {
                 res.should.have.status(201);
+                done();
             });
         });
     });
