@@ -14,7 +14,7 @@ describe('Users', () => {
         });        
     });
 
-    describe('/POST - Users', () => {
+    describe('/POST - User Signup', () => {
         it('It should POST a user - create', (done) => {
 
             const user = {
@@ -31,4 +31,25 @@ describe('Users', () => {
             });
         });
     });
+
+    describe('/POST - User Login', () => {
+        it('It should POST a user - Login', (done) => {
+
+            const user = {
+                email: 'martin@test.com',
+                password: 'password'
+            }
+
+            chai.request(server)
+            .post('/users/Login')
+            .send(user)
+            .end((err,res) => {
+                res.should.have.status(200);
+                res.body.should.be.an('Object');
+                res.body.should.have.property('message').eql('Auth Success');
+                done();
+            });
+        });
+    });
+
 });
