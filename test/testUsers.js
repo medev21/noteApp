@@ -82,8 +82,8 @@ describe('Users', () => {
             .send(user)
             .end((err,res) => {
                 res.should.have.status(401);
-                // res.body.should.be.an('Object');
-                // res.body.should.have.property('message').eql('Auth Success');
+                res.body.should.be.an('Object');
+                res.body.should.have.property('message').eql('Auth Failed');
                 done();
             });
         });
