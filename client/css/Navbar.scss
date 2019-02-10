@@ -10,12 +10,24 @@ div.navbar{
     z-index: 1;
     background-color: #FFF;
 
-    .userInitials{
-        height: 70px;
-        width: 70px;
-        line-height: 70px;
-        text-align: center;
-        border: 1px solid #000;
-        border-radius: 50%;
+    .rightSection{
+        .logoutButton{
+            float: left;
+            height: 70px;
+            width: 70px;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        .userInitials{
+            height: 70px;
+            width: 70px;
+            line-height: 70px;
+            text-align: center;
+            border: 1px solid #000;
+            border-radius: 50%;
+            float: right;
+            margin-right: 30px;
+        }
     }
 }
