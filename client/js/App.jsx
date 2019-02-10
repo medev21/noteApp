@@ -35,7 +35,7 @@ class App extends Component {
     });
   };
 
-  handleUpdateNote = (noteId, updatedTitle, updatedDescription, updatedPinned) => {
+  handleUpdateNote = (event, noteId, updatedTitle, updatedDescription, updatedPinned) => {
     Apis.updateNote(noteId, updatedTitle, updatedDescription, updatedPinned)
     .then((response) => {
       if(response.status === 200){
@@ -44,6 +44,7 @@ class App extends Component {
     }).catch((error) => {
       console.log(error);
     });
+    event.preventDefault();
   };
 
   handleDeleteNote = (noteId,index) => {

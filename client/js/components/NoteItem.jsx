@@ -43,8 +43,9 @@ class NoteItem extends React.Component{
         this.handleUpdate(noteId, updatedTitle, updatedDescription, updatedPinned);
     };
 
-    handleUpdate = (noteId, updatedTitle, updatedDescription, updatedPinned) => {
-        this.props.onUpdate(noteId, updatedTitle, updatedDescription, updatedPinned);
+    handleUpdate = (event, noteId, updatedTitle, updatedDescription, updatedPinned) => {
+        this.handleCloseModal();
+        this.props.onUpdate(event, noteId, updatedTitle, updatedDescription, updatedPinned);
     };
 
     handleDeleteNote = (e) => {

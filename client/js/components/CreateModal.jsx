@@ -39,7 +39,7 @@ class CreateModal extends React.Component {
     }
 
     handleSubmit = (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         let title = this.state.title;
         let description = this.state.description;
         let pinned = this.state.pinned;
