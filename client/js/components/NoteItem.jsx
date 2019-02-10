@@ -40,7 +40,7 @@ class NoteItem extends React.Component{
         let updatedTitle = this.state.title;
         let updatedDescription = this.state.description;
         let updatedPinned = !this.state.pinned;
-        this.handleUpdate(noteId, updatedTitle, updatedDescription, updatedPinned);
+        this.handleUpdate(e,noteId, updatedTitle, updatedDescription, updatedPinned);
     };
 
     handleUpdate = (event, noteId, updatedTitle, updatedDescription, updatedPinned) => {
