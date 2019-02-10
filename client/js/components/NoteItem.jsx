@@ -44,6 +44,11 @@ class NoteItem extends React.Component{
     };
 
     handleUpdate = (event, noteId, updatedTitle, updatedDescription, updatedPinned) => {
+        this.setState({
+            title: updatedTitle,
+            description: updatedDescription,
+            pinned: updatedPinned
+        });
         this.handleCloseModal();
         this.props.onUpdate(event, noteId, updatedTitle, updatedDescription, updatedPinned);
     };
