@@ -41,7 +41,7 @@
   },
   "scripts": {
     "build": "react-scripts build",
-    "test": "mocha --timeout 10000",
+    "test": "mocha --timeout 10000 --exit",
     "eject": "react-scripts eject",
     "server": "nodemon bin/www | pino-colada",
     "client": "webpack-dev-server --hot --progress --mode development",

@@ -25,8 +25,6 @@ describe('Users', () => {
                 password: 'password'
             }
 
-            console.log("FIRST TEST",user.password);
-
             chai.request(server)
             .post('/users/signup')
             .send(user)
@@ -47,7 +45,7 @@ describe('Users', () => {
             }
 
             bcrypt.hash(loginParams.password, 10, (err,hash) => {
-                console.log("SECOND TEST",loginParams.password);
+
                 const user = new User({
                     _id: new mongoose.Types.ObjectId,
                     email: loginParams.email,
@@ -62,6 +60,7 @@ describe('Users', () => {
                         res.should.have.status(200);
                         res.body.should.be.an('Object');
                         res.body.should.have.property('message').eql('Auth Success');
+                        res.body.should.have.property('token');
                         done();
                     });
                 });
