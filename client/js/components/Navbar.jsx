@@ -7,8 +7,11 @@ class Navbar extends React.Component {
 
         return (
             <div className="navbar">
-                <div className="logoutButton">logout</div>
-                <div className="userInitials">MB</div>
+                <div className="rightSection">
+                    <div className="logoutButton">logout</div>
+                    <div className="userInitials">MB</div>
+                </div>
+
             </div>
             
         );
