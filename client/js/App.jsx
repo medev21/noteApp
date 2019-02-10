@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../css/App.scss';
 import Apis from './utils/Apis';
 import Notes from './components/Notes';
-import AddNote from './components/AddNote';
 import Navbar from './components/Navbar';
 
 class App extends Component {
