@@ -19,6 +19,22 @@ class Login extends React.Component {
         })
     };
 
+    handleLoginSubmit = (event) => {
+        const userLogin = {
+            email: this.state.email,
+            password: this.state.password
+        }
+        Apis.postLogin(userLogin)
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+
+        event.preventDefault();
+    }
+
     render(){
         return(
             <form onSubmit={this.handleLoginSubmit}>
