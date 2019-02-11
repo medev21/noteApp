@@ -27,7 +27,7 @@
     "mongoose": "^5.3.11",
     "node-sass": "^4.10.0",
     "nodemon": "^1.18.6",
-    "npm": "^6.5.0",
+    "npm": "^6.7.0",
     "pino-colada": "^1.4.4",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
@@ -41,7 +41,7 @@
   },
   "scripts": {
     "build": "react-scripts build",
-    "test": "mocha --timeout 10000",
+    "test": "mocha --timeout 10000 --exit",
     "eject": "react-scripts eject",
     "server": "nodemon bin/www | pino-colada",
     "client": "webpack-dev-server --hot --progress --mode development",

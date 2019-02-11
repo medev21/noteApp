@@ -38,12 +38,13 @@ class UpdateModal extends React.Component{
         });
     }
 
-    handleUpdateNote = () => {
+    handleUpdateNote = (event) => {
+        // event.preventDefault();
         let noteId = this.state.id;
         let updatedTitle = this.state.title;
         let updatedDescription = this.state.description;
         let updatedPinned = this.state.pinned;
-        this.props.update(noteId, updatedTitle, updatedDescription, updatedPinned);
+        this.props.update(event,noteId, updatedTitle, updatedDescription, updatedPinned);
     };
 
     render(){

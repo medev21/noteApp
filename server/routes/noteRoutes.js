@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '../../build/index.html'));
 });
 
-router.post("/api/insertnote", (req, res) => {
+router.post("/insertnote", (req, res) => {
     let note = new Notes();
     note.title = req.body.title;
     note.description = req.body.description;
@@ -21,7 +21,8 @@ router.post("/api/insertnote", (req, res) => {
     });
  });
 
-router.get('/api/getnotes', (req, res) => {
+router.get('/getnotes', (req, res) => {
+    console.log("hello world");
     Notes.find({}, (err, notes) => {
         if(err){
             res.send(err)
@@ -30,7 +31,7 @@ router.get('/api/getnotes', (req, res) => {
     });
 });
 
-router.put('/api/updatenote/:noteId', (req, res) => {
+router.put('/updatenote/:noteId', (req, res) => {
     Notes.updateMany(
         {"_id": req.params.noteId},
         {"$set": {"title": req.body.title, "description": req.body.description, "pinned": req.body.pinned}}, 
@@ -44,7 +45,7 @@ router.put('/api/updatenote/:noteId', (req, res) => {
     });
 });
 
-router.delete('/api/deletenote/:noteId', (req, res) => {
+router.delete('/deletenote/:noteId', (req, res) => {
     Notes.deleteOne({_id: req.params.noteId}, (err) => {
         if(!err){
             res.sendStatus(200);

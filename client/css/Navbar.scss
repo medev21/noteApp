@@ -1,17 +1,33 @@
 div.navbar{
     height: 100px;
-    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     border-bottom: 1px solid #DADCE0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: #FFF;
 
-    .userInitials{
-        height: 70px;
-        width: 70px;
-        background-color: blue;
-        line-height: 70px;
-        text-align: center;
-        border-radius: 50%;
+    .rightSection{
+        .logoutButton{
+            float: left;
+            height: 70px;
+            width: 70px;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        .userInitials{
+            height: 70px;
+            width: 70px;
+            line-height: 70px;
+            text-align: center;
+            border: 1px solid #000;
+            border-radius: 50%;
+            float: right;
+            margin-right: 30px;
+        }
     }
 }

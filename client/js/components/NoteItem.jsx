@@ -40,11 +40,17 @@ class NoteItem extends React.Component{
         let updatedTitle = this.state.title;
         let updatedDescription = this.state.description;
         let updatedPinned = !this.state.pinned;
-        this.handleUpdate(noteId, updatedTitle, updatedDescription, updatedPinned);
+        this.handleUpdate(e,noteId, updatedTitle, updatedDescription, updatedPinned);
     };
 
-    handleUpdate = (noteId, updatedTitle, updatedDescription, updatedPinned) => {
-        this.props.onUpdate(noteId, updatedTitle, updatedDescription, updatedPinned);
+    handleUpdate = (event, noteId, updatedTitle, updatedDescription, updatedPinned) => {
+        this.setState({
+            title: updatedTitle,
+            description: updatedDescription,
+            pinned: updatedPinned
+        });
+        this.handleCloseModal();
+        this.props.onUpdate(event, noteId, updatedTitle, updatedDescription, updatedPinned);
     };
 
     handleDeleteNote = (e) => {
