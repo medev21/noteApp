@@ -1,7 +1,7 @@
 div.notesContainer{
     overflow: auto;
     width: 998px; /*temp*/
-    margin: 100px auto 0;
+    margin: 150px auto 0;
 
     .notesSection{
         overflow: auto;
@@ -111,7 +111,7 @@ div.notesContainer{
         line-height: 90px;
         width: 100px;
         text-align: center;
-        background: red;
+        border: 1px solid #000;
         border-radius: 50%;
     }
 }

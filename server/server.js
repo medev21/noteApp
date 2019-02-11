@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const pino = require('express-pino-logger')();
 
-const router = require('./routes/routes.js');
+const noteRouter = require('./routes/noteRoutes');
 const userRouter = require('./routes/userRoutes');
 
 require('dotenv').config();
@@ -29,7 +29,7 @@ conn.once('open', () => {
 });
 
 //pass in routes from router const
-app.use('/',router);
-app.use('/users', userRouter);
+app.use('/api/notes',noteRouter);
+app.use('/api/users', userRouter);
 
 module.exports=app;

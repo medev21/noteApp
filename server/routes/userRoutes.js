@@ -60,7 +60,7 @@ router.post('/login', (req,res,next) => {
                 },
                 process.env.JWT_KEY,
                 {
-                    expiresIn: "1h"
+                    expiresIn: '1h'
                 });
 
                 return res.status(200).json({
@@ -68,14 +68,11 @@ router.post('/login', (req,res,next) => {
                     token: token
                 });
             }
-
+            
             res.status(401).json({
                 message: 'Auth Failed'
-            })
-        })
-
-        
-        
+            });
+        });
     })
     .catch(err => {
         res.status(500).json({
