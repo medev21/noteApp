@@ -1,7 +1,6 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 import Apis from '../utils/Apis';
-import { RSA_NO_PADDING } from 'constants';
 
 class Login extends React.Component {
 
@@ -29,7 +28,11 @@ class Login extends React.Component {
         .then((res) => {
             if(res.data){
                 sessionStorage.setItem('userData', JSON.stringify(res.data))
-                this.setState({redirectBool: true})
+                this.setState({
+                    email: '',
+                    password: '',
+                    redirectBool: true
+                })
             }
         })
         .catch((err) => {
