@@ -1,5 +1,6 @@
 import React from 'react';
 import Redirect from 'react-router-dom';
+import Apis from '../utils/Apis';
 
 class Login extends React.Component {
 
@@ -7,7 +8,8 @@ class Login extends React.Component {
         super(props);
         this.state ={
             email: '',
-            password: ''
+            password: '',
+            redirect: false
         };
     }
 
@@ -19,7 +21,7 @@ class Login extends React.Component {
 
     render(){
         return(
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleLoginSubmit}>
                 <div className="emailSection">
                     <input type="text"  name="email" placeholder="email" onChange={this.handleChange}/>
                 </div>
