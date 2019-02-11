@@ -2,6 +2,18 @@ import Axios from 'axios';
 
 export default {
 
+    postLogin: (userLogin) => {
+        return new Promise((resolve, reject) => {
+            Axios.post('/api/users/login', userLogin)
+            .then((response) => {
+                resolve(response);
+            })
+            .catch((error) => {
+                reject(error);
+            });
+        });
+    },
+
     getNotes: () => {
         return new Promise((resolve, reject) => {
             Axios.get('/api/notes/getnotes')
