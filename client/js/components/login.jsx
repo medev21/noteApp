@@ -1,6 +1,7 @@
 import React from 'react';
-import Redirect from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import Apis from '../utils/Apis';
+import { RSA_NO_PADDING } from 'constants';
 
 class Login extends React.Component {
 
@@ -9,7 +10,7 @@ class Login extends React.Component {
         this.state ={
             email: '',
             password: '',
-            redirect: false
+            redirectBool: false
         };
     }
 
@@ -26,7 +27,10 @@ class Login extends React.Component {
         }
         Apis.postLogin(userLogin)
         .then((res) => {
-            console.log(res);
+            if(res.data){
+                sessionStorage.setItem('userData', JSON.stringify(res.data))
+                this.setState({redirectBool: true})
+            }
         })
         .catch((err) => {
             console.log(err);
@@ -36,6 +40,15 @@ class Login extends React.Component {
     }
 
     render(){
+        const isHome = this.state.redirectBool;
+        if(isHome){
+            return <Redirect to='/home'/>;
+        }
+
+        if(sessionStorage.getItem('userData')){
+            return <Redirect to='/home'/>;
+        }
+
         return(
             <form onSubmit={this.handleLoginSubmit}>
                 <div className="emailSection">
