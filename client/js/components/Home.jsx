@@ -3,6 +3,7 @@ import '../../css/App.scss';
 import Apis from '../utils/Apis';
 import Notes from './Notes';
 import Navbar from './Navbar';
+import {Redirect} from 'react-router-dom';
 
 class Home extends Component {
 
@@ -10,6 +11,7 @@ class Home extends Component {
     super(props);
     this.state = {
       notes: [],
+      redirectTo: false
     }
   };
 
@@ -65,10 +67,18 @@ class Home extends Component {
   };
 
   componentDidMount = () => {
-    this.handleGetNotes();
+    if(sessionStorage.getItem('userData')){
+      this.handleGetNotes();
+    }else{
+      this.setState({redirectTo: true});
+    }
   };
 
   render() {
+    const isHome = this.state.redirectTo;
+    if(isHome){
+      return <Redirect to="/"/>
+    }
 
     return (
       <div className="appContainer">
