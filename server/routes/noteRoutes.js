@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const Notes = require('../../models/notesSchema');
+const checkAuth = require('../../middleware/checkAuth');
 
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '../../build/index.html'));
@@ -21,7 +22,7 @@ router.post("/insertnote", (req, res) => {
     });
  });
 
-router.get('/getnotes', (req, res) => {
+router.get('/getnotes', checkAuth, (req, res) => {
     Notes.find({}, (err, notes) => {
         if(err){
             res.send(err)
