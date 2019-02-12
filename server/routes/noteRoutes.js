@@ -22,7 +22,6 @@ router.post("/insertnote", (req, res) => {
  });
 
 router.get('/getnotes', (req, res) => {
-    console.log("hello world");
     Notes.find({}, (err, notes) => {
         if(err){
             res.send(err)
