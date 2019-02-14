@@ -72,13 +72,22 @@ class Home extends Component {
     const session = sessionStorage.getItem('userData');
     const isSession = session != '' && session != null ? true : false;
     if(isSession){
-      const session = JSON.parse(sessionStorage.getItem('userData'));
-      const token = session.token;
-      const config = { headers: { Authorization: `Bearer ${token}`}}
+      // const session = JSON.parse(sessionStorage.getItem('userData'));
+      // const token = session.token;
+      // const config = { headers: { Authorization: `Bearer ${token}`}}
+      const config = this.handleGetSession();
       this.handleGetNotes(config);
     }else{
       this.setState({redirectTo: true});
     }
+  };
+
+  handleGetSession = () => {
+    const session = JSON.parse(sessionStorage.getItem('userData'));
+    const token = session.token;
+    const config = { headers: { Authorization: `Bearer ${token}`}}
+
+    return config
   };
 
   render() {
