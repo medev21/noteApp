@@ -25,7 +25,7 @@ router.post("/insertnote", (req, res) => {
 router.get('/getnotes', checkAuth, (req, res) => {
     Notes.find({}, (err, notes) => {
         if(err){
-            res.send(err)
+            return res.status(500).json({message: 'Something went wrong'})
         }
         res.json(notes);
     });

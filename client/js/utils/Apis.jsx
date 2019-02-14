@@ -14,11 +14,11 @@ export default {
         });
     },
 
-    getNotes: () => {
+    getNotes: (config) => {
 
-        const session = JSON.parse(sessionStorage.getItem('userData'));
-        const token = session.token;
-        const config = { headers: { Authorization: `Bearer ${token}`}}
+        // const session = JSON.parse(sessionStorage.getItem('userData'));
+        // const token = session.token;
+        // const config = { headers: { Authorization: `Bearer ${token}`}}
         return new Promise((resolve, reject) => {
             Axios.get('/api/notes/getnotes', config)
             .then((response) => {

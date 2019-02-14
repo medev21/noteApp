@@ -26,13 +26,15 @@ class Home extends Component {
     event.preventDefault();
   };
 
-  handleGetNotes = () => {
-    Apis.getNotes().then((response) => {
+  handleGetNotes = (config) => {
+    Apis.getNotes(config).then((response) => {
       this.setState({
         notes: response.data
       });
     }).catch((error) => {
-      console.log(error);
+      sessionStorage.getItem('userData','');
+      sessionStorage.clear();
+      this.setState({redirectTo: true});
     });
   };
 
@@ -67,8 +69,13 @@ class Home extends Component {
   };
 
   componentDidMount = () => {
-    if(sessionStorage.getItem('userData')){
-      this.handleGetNotes();
+    const session = sessionStorage.getItem('userData');
+    const isSession = session != '' && session != null ? true : false;
+    if(isSession){
+      const session = JSON.parse(sessionStorage.getItem('userData'));
+      const token = session.token;
+      const config = { headers: { Authorization: `Bearer ${token}`}}
+      this.handleGetNotes(config);
     }else{
       this.setState({redirectTo: true});
     }
@@ -89,7 +96,6 @@ class Home extends Component {
           onDelete={this.handleDeleteNote}
           submit={this.handleSubmitNote}
         />
-        {/* <AddNote submit={this.handleSubmitNote}/> */}
       </div>
     );
   }
