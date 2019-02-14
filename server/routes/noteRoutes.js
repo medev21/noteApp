@@ -31,7 +31,7 @@ router.get('/getnotes', checkAuth, (req, res) => {
     });
 });
 
-router.put('/updatenote/:noteId', (req, res) => {
+router.put('/updatenote/:noteId', checkAuth, (req, res) => {
     Notes.updateMany(
         {"_id": req.params.noteId},
         {"$set": {"title": req.body.title, "description": req.body.description, "pinned": req.body.pinned}}, 

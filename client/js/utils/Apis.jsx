@@ -39,8 +39,7 @@ export default {
         });
     },
 
-    updateNote: (noteId, updatedTitle, updatedDescription, updatedPinned) => {
-        const config = {headers: {'Content-Type': 'application/json'}};
+    updateNote: (noteId, updatedTitle, updatedDescription, updatedPinned, config) => {
         const content = {
             title: updatedTitle,
             description: updatedDescription,

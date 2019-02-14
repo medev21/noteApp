@@ -40,10 +40,11 @@ class Home extends Component {
   };
 
   handleUpdateNote = (event, noteId, updatedTitle, updatedDescription, updatedPinned) => {
-    Apis.updateNote(noteId, updatedTitle, updatedDescription, updatedPinned)
+    const config = this.handleGetSession();
+    Apis.updateNote(noteId, updatedTitle, updatedDescription, updatedPinned, config)
     .then((response) => {
       if(response.status === 200){
-        this.handleGetNotes();
+        this.handleGetNotes(config);
       }
     }).catch((error) => {
       console.log(error);
@@ -53,7 +54,6 @@ class Home extends Component {
 
   handleDeleteNote = (noteId,index) => {
     const config = this.handleGetSession();
-    //Call DELETE API
     Apis.deleteNote(noteId, config).then((response) => {
       if(response.status === 200){
         this.state.notes.splice(index,1);
@@ -74,9 +74,6 @@ class Home extends Component {
     const session = sessionStorage.getItem('userData');
     const isSession = session != '' && session != null ? true : false;
     if(isSession){
-      // const session = JSON.parse(sessionStorage.getItem('userData'));
-      // const token = session.token;
-      // const config = { headers: { Authorization: `Bearer ${token}`}}
       const config = this.handleGetSession();
       this.handleGetNotes(config);
     }else{
