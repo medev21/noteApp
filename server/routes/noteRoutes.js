@@ -45,7 +45,7 @@ router.put('/updatenote/:noteId', (req, res) => {
     });
 });
 
-router.delete('/deletenote/:noteId', (req, res) => {
+router.delete('/deletenote/:noteId', checkAuth, (req, res) => {
     Notes.deleteOne({_id: req.params.noteId}, (err) => {
         if(!err){
             res.sendStatus(200);

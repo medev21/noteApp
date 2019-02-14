@@ -51,12 +51,13 @@ class Home extends Component {
   };
 
   handleDeleteNote = (noteId,index) => {
+    const config = this.handleGetSession();
     //Call DELETE API
-    Apis.deleteNote(noteId).then((response) => {
+    Apis.deleteNote(noteId, config).then((response) => {
       if(response.status === 200){
         this.state.notes.splice(index,1);
 
-        this.handleGetNotes();
+        this.handleGetNotes(config);
         console.log('it has been deleted')
         //add a message
       }else{

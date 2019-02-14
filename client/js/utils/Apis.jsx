@@ -55,9 +55,9 @@ export default {
         });
     },
 
-    deleteNote: (noteId) => {
+    deleteNote: (noteId, config) => {
         return new Promise((resolve, reject) => {
-            Axios.delete('/api/notes/deletenote/' + noteId).then((response) => {
+            Axios.delete('/api/notes/deletenote/' + noteId, config).then((response) => {
                 resolve(response);
             }).catch((error) => {
                 reject(error)
