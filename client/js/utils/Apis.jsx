@@ -25,13 +25,13 @@ export default {
         });
     },
 
-    postNote: (title, description, pinned) => {
+    postNote: (title, description, pinned, config) => {
         return new Promise((resolve, reject) => {
             Axios.post('/api/notes/insertnote', {
                 title: title,
                 description: description,
                 pinned: pinned
-            }).then(function (response){
+            }, config).then(function (response){
                 resolve(response);
             }).catch(function(error){
                 reject(error);

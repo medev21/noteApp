@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '../../build/index.html'));
 });
 
-router.post("/insertnote", (req, res) => {
+router.post("/insertnote", checkAuth, (req, res) => {
     let note = new Notes();
     note.title = req.body.title;
     note.description = req.body.description;

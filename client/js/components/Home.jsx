@@ -16,9 +16,10 @@ class Home extends Component {
   };
 
   handleSubmitNote = (event,title,description,pinned) => {
-    Apis.postNote(title, description, pinned).then((response) => {
+    const config = this.handleGetSession();
+    Apis.postNote(title, description, pinned, config).then((response) => {
       if(response.status === 200){
-        this.handleGetNotes();
+        this.handleGetNotes(config);
       }
     }).catch((error) => {
       console.log("App.jsx post note error - ", error)
