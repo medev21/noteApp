@@ -1,0 +1,41 @@
+div.loginContainer{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    min-height: 100vh;
+
+    .loginHeader{
+
+    }
+
+    .loginForm{
+        margin-top: 40px;
+        form{
+
+            input{
+                height: 50px;
+                width: 50%;
+                font-size: 13px;
+                border: 1px solid #dadce0;
+                border-radius: 10px;
+                padding: 0 20px;
+            }
+
+            .emailSection{
+                margin-bottom: 10px;
+            }
+
+            .passwordSection{
+
+            }
+
+            .submitSection{
+
+            }
+        }
+    }
+}
