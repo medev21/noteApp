@@ -17,6 +17,7 @@ div.navbar{
             width: 70px;
             text-align: center;
             line-height: 70px;
+            cursor: pointer;
         }
 
         .userInitials{
@@ -24,10 +25,12 @@ div.navbar{
             width: 70px;
             line-height: 70px;
             text-align: center;
-            border: 1px solid #000;
+            // border: 1px solid #000;
             border-radius: 50%;
             float: right;
             margin-right: 30px;
+            background-color: rgb(204, 255, 144);
+            font-weight: 700;
         }
     }
 }
