@@ -30,7 +30,20 @@ div.loginContainer{
             }
 
             .submitSection{
+                button{
+                    height: 50px;
+                    width: 30%;
+                    background-color: white;
+                    border: 1px solid #dadce0;
+                    border-radius: 10px;
+                    font-size: 13px;
+                    cursor: pointer;
+                }
 
+                button:hover{
+                    background-color: rgb(174, 203, 250);
+                    color: #FFF;
+                }
             }
         }
     }
