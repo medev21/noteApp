@@ -111,7 +111,10 @@ div.notesContainer{
         line-height: 90px;
         width: 100px;
         text-align: center;
-        border: 1px solid #000;
+        // border: 1px solid #000;
         border-radius: 50%;
+        background-color: rgb(242, 139, 130);
+        color: #FFF;
+        cursor: pointer;
     }
 }
