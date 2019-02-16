@@ -78,10 +78,11 @@ class NoteItem extends React.Component{
 
         const isPinned = this.state.pinned;
         const tooltipStatus = this.state.tooltipBool
+        const tooltipMsg = this.state.tooltipMsg
         let tooltip;
 
         if(tooltipStatus){
-            tooltip = <Tooltip pinBool={isPinned}/>
+            tooltip = <Tooltip pinBool={isPinned} icon={tooltipMsg}/>
         }
 
         return(
@@ -114,7 +115,7 @@ class NoteItem extends React.Component{
                         onClick={this.handleDeleteNote} 
                         onMouseOver={this.handleShowTooltip} 
                         onMouseOut={this.handleCloseTooltip}  
-                        name="delete"
+                        name="Delete"
                     />
                 </div>
                 
