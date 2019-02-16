@@ -61,8 +61,10 @@
         .submitSection{
           text-align: right;
           margin-top: 50px;
-          font-weight: 700;
-          button{cursor: pointer;}
+          button{
+            cursor: pointer;
+            font-weight: 700;
+          }
         }
       }
     }
