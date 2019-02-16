@@ -18,7 +18,8 @@ class NoteItem extends React.Component{
             pinned: this.props.note.pinned,
             updated: this.props.note.updated,
             modalName: null,
-            tooltipBool: false
+            tooltipBool: false,
+            tooltipMsg: ''
         }
     };
 
@@ -59,12 +60,18 @@ class NoteItem extends React.Component{
         this.props.onDelete(this.state.id);
     };
 
-    handleShowTooltip = () => {
-        this.setState({tooltipBool: true});
+    handleShowTooltip = (e) => {
+        let icon = e.currentTarget.getAttribute("name");
+        this.setState({
+            tooltipBool: true,
+            tooltipMsg: icon
+        });
     };
 
     handleCloseTooltip = () => {
-        this.setState({tooltipBool: false});
+        this.setState({
+            tooltipBool: false
+        });
     };
 
     render() {
@@ -87,7 +94,8 @@ class NoteItem extends React.Component{
                         size="1x" 
                         onClick={this.handleUpdatePin} 
                         onMouseOver={this.handleShowTooltip} 
-                        onMouseOut={this.handleCloseTooltip}
+                        onMouseOut={this.handleCloseTooltip} 
+                        name="pin"
                     >
                     </FontAwesomeIcon>                  
                 </div>
@@ -100,7 +108,14 @@ class NoteItem extends React.Component{
                     </div>
                 </div>
                 <div className="footer">
-                    <FontAwesomeIcon icon='trash' size="1x" onClick={this.handleDeleteNote}/>
+                    <FontAwesomeIcon 
+                        icon='trash' 
+                        size="1x" 
+                        onClick={this.handleDeleteNote} 
+                        onMouseOver={this.handleShowTooltip} 
+                        onMouseOut={this.handleCloseTooltip}  
+                        name="delete"
+                    />
                 </div>
                 
                 <ModalConductor 
