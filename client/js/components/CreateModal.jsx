@@ -2,7 +2,8 @@ import React from 'react';
 import ModalWrapper from './ModalWrapper';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbtack, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faThumbtack, faPlus } from '@fortawesome/free-solid-svg-icons';
+import Tooltip from './Tooltip';
 
 library.add(faThumbtack, faPlus)
 
@@ -13,7 +14,8 @@ class CreateModal extends React.Component {
         this.state = {
           title: '',
           description: '',
-          pinned: false
+          pinned: false,
+          tooltipBool: false
         }
         this.handleSubmit.bind(this);
         // this.handlePinnedChange.bind(this);
@@ -51,14 +53,37 @@ class CreateModal extends React.Component {
         });
     }
 
+    handleShowTooltip = () => {
+        this.setState({tooltipBool: true});
+    };
+
+    handleCloseTooltip = () => {
+        this.setState({tooltipBool: false});
+    };
+
     render(){
         const isPinned = this.state.pinned;
+        const tooltipStatus = this.state.tooltipBool
+        let tooltip;
+
+        if(tooltipStatus){
+            tooltip = <Tooltip pinBool={isPinned}/>
+        }
 
         return(
             <ModalWrapper close={this.props.close}>
                 <form onSubmit={this.handleSubmit}>
                     <div className="pinSection">
-                        <button onClick={this.handlePinnedChange}><FontAwesomeIcon transform={isPinned ? "rotate-0" : "rotate-45"} icon="thumbtack" size="1x"/></button>
+                        {/* <button onClick={this.handlePinnedChange}><FontAwesomeIcon transform={isPinned ? "rotate-0" : "rotate-45"} icon="thumbtack" size="1x"/></button> */}
+                        {tooltip}
+                        <FontAwesomeIcon 
+                            transform={isPinned ? "rotate-0" : "rotate-45"} 
+                            icon="thumbtack" 
+                            size="1x" 
+                            onClick={this.handlePinnedChange} 
+                            onMouseOver={this.handleShowTooltip} 
+                            onMouseOut={this.handleCloseTooltip}
+                        />
                     </div>
                     <div className="titleSection">
                         <input type="text" placeholder="title" value={this.state.title} onChange={this.handleTitleChange}/>
@@ -67,7 +92,7 @@ class CreateModal extends React.Component {
                         <textarea type="text" placeholder="description" value={this.state.description} onChange={this.handleDescriptionChange}/>
                     </div>
                     <div className="submitSection">
-                        <button type="submit"><FontAwesomeIcon icon="plus" size="1x"/></button>
+                        <button type="submit">Create</button>
                     </div>
                 </form>
             </ModalWrapper>

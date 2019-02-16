@@ -48,7 +48,8 @@
         }
         .pinSection{
           text-align: right;
-          button{font-size: 25px;}
+          font-size: 25px;
+          // button{font-size: 25px;}
         }
 
         .descriptionSection{
@@ -60,6 +61,8 @@
         .submitSection{
           text-align: right;
           margin-top: 50px;
+          font-weight: 700;
+          button{cursor: pointer;}
         }
       }
     }
