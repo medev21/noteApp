@@ -28,6 +28,11 @@ class Navbar extends React.Component {
 
         return (
             <div className="navbar">
+                <div className="leftSection">
+                    <div>
+                        <h2>Note App</h2>
+                    </div>
+                </div>
                 <div className="rightSection">
                     <div className="logoutButton" onClick={this.handleLogout}>logout</div>
                     <div className="userInitials">MB</div>
