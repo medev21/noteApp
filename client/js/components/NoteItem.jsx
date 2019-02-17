@@ -70,7 +70,8 @@ class NoteItem extends React.Component{
 
     handleCloseTooltip = () => {
         this.setState({
-            tooltipBool: false
+            tooltipBool: false,
+            tooltipMsg: ''
         });
     };
 
@@ -79,16 +80,22 @@ class NoteItem extends React.Component{
         const isPinned = this.state.pinned;
         const tooltipStatus = this.state.tooltipBool
         const tooltipMsg = this.state.tooltipMsg
-        let tooltip;
+        let tooltipPin;
+        let tooltipDelete;
 
         if(tooltipStatus){
-            tooltip = <Tooltip pinBool={isPinned} icon={tooltipMsg}/>
+            if(tooltipMsg == 'Delete')
+                tooltipDelete = <Tooltip icon={tooltipMsg}/>
+            else{
+                const pinMsg = isPinned ? "Unpin note" : "Pin note";
+                tooltipPin = <Tooltip icon={pinMsg}/>
+            }
         }
 
         return(
             <div className="noteCard" onClick={this.handleShowModal}>
                 <div className="header">
-                    {tooltip}
+                    {tooltipPin}
                     <FontAwesomeIcon 
                         transform={isPinned ? "rotate-0" : "rotate-45"} 
                         icon={['fa', 'thumbtack']} 
@@ -109,6 +116,7 @@ class NoteItem extends React.Component{
                     </div>
                 </div>
                 <div className="footer">
+                    {tooltipDelete}
                     <FontAwesomeIcon 
                         icon='trash' 
                         size="1x" 
