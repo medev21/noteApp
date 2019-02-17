@@ -6,7 +6,7 @@ const Dotenv = require('dotenv-webpack');
 const config = {
     entry: __dirname + '/client/js/index.jsx',
     output: {
-        path: __dirname + '/build',
+        path: path.resolve(__dirname, 'build/'),
         filename: 'bundle.js'
     },
     resolve: {
@@ -50,23 +50,10 @@ const config = {
             index: 'index.html'
         }
     },
-    // node: {
-    //     fs: 'empty'
-    // },
     plugins: [
         new CopyWebpackPlugin([
             { from: './client/index.html', to: './index.html' }
-        ]),
-        // new Dotenv({
-        //     path: './.env',
-        // }),
-        // new webpack.DefinePlugin({
-		// 	'process.env': {
-        //         NODE_ENV: JSON.stringify("development"),
-		// 		REACT_APP_DBUSER: JSON.stringify(process.env.REACT_APP_DBUSER),
-		// 		REACT_APP_DBPASSWORD: JSON.stringify(process.env.REACT_APP_DBPASSWORD)
-		// 	}
-		// })
+        ])
     ]
 }
 

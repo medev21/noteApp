@@ -40,7 +40,7 @@
     "webpack-dev-server": "^3.1.10"
   },
   "scripts": {
-    "build": "react-scripts build",
+    "build": "webpack -p --progress --config webpack.config.js",
     "test": "mocha --timeout 10000 --exit",
     "eject": "react-scripts eject",
     "server": "nodemon bin/www | pino-colada",
@@ -53,7 +53,7 @@
     }
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "notaSimple"
   },
   "browserslist": [
     ">0.2%",
