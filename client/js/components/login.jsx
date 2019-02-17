@@ -56,7 +56,7 @@ class Login extends React.Component {
         return(
             <div className="loginContainer">
                 <div className="loginHeader">
-                    <h3>Note App</h3>
+                    <h3>NotaSimple</h3>
                 </div>
 
                 <div className="loginForm">

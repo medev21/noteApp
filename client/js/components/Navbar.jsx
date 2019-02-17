@@ -30,7 +30,7 @@ class Navbar extends React.Component {
             <div className="navbar">
                 <div className="leftSection">
                     <div>
-                        <h2>Note App</h2>
+                        <h2>NotaSimple</h2>
                     </div>
                 </div>
                 <div className="rightSection">
