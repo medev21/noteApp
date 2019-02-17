@@ -74,15 +74,15 @@ div.appContainer{
 	}
 
 	.tooltipBottom{
-		bottom: 100%;
-		left: 60%;
-		transform: translateX(-60%);
+		top: 45px;
+		left: 62%;
+		transform: translateX(-62%);
 
 		&::after {
 			border-left: 9px solid transparent;
 			border-right: 9px solid transparent;
-			border-top: 9px solid black;
-			bottom: -8px;
+			border-bottom: 9px solid black;
+			top: -9px;
 			left: 60%;
 			transform: translateX(-80%);
 		}

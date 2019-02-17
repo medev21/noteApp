@@ -85,10 +85,10 @@ class NoteItem extends React.Component{
 
         if(tooltipStatus){
             if(tooltipMsg == 'Delete')
-                tooltipDelete = <Tooltip icon={tooltipMsg}/>
+                tooltipDelete = <Tooltip icon={tooltipMsg} position="tooltipBottom"/>
             else{
                 const pinMsg = isPinned ? "Unpin note" : "Pin note";
-                tooltipPin = <Tooltip icon={pinMsg}/>
+                tooltipPin = <Tooltip icon={pinMsg} position="tooltipTop"/>
             }
         }
 
