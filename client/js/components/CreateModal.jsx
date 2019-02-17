@@ -67,7 +67,8 @@ class CreateModal extends React.Component {
         let tooltip;
 
         if(tooltipStatus){
-            tooltip = <Tooltip pinBool={isPinned}/>
+            const pinMsg = isPinned ? "Unpin note" : "Pin note";
+            tooltip = <Tooltip icon={pinMsg} position="tooltipTop"/>
         }
 
         return(
