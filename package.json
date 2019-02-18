@@ -47,7 +47,7 @@
     "client": "webpack-dev-server --hot --progress --mode development",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start": "node bin/www",
-    "heroku-postbuild": "npm install && npm run build"
+    "heroku-postbuild": "webpack -p"
   },
   "proxy": {
     "/api/*": {
