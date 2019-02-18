@@ -1,7 +1,7 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 import Apis from '../utils/Apis';
-import '../../css/login.scss';
+import '../../css/Login.scss';
 
 class Login extends React.Component {
 
