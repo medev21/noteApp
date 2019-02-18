@@ -4,10 +4,6 @@ const router = express.Router();
 const Notes = require('../../models/notesSchema');
 const checkAuth = require('../../middleware/checkAuth');
 
-router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + '../../build/index.html'));
-});
-
 router.post("/insertnote", checkAuth, (req, res) => {
     let note = new Notes();
     note.title = req.body.title;

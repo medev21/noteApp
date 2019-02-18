@@ -32,4 +32,8 @@ conn.once('open', () => {
 app.use('/api/notes',noteRouter);
 app.use('/api/users', userRouter);
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+});
+
 module.exports=app;
