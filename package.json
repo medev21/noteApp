@@ -46,7 +46,8 @@
     "server": "nodemon bin/www | pino-colada",
     "client": "webpack-dev-server --hot --progress --mode development",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "node bin/www"
+    "start": "node bin/www",
+    "heroku-postbuild": "npm run build"
   },
   "proxy": {
     "/api/*": {
