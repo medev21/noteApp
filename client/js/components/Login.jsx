@@ -8,8 +8,8 @@ class Login extends React.Component {
     constructor(props){
         super(props);
         this.state ={
-            email: '',
-            password: '',
+            email: 'test@test.com',
+            password: '123',
             redirectBool: false
         };
     }
@@ -30,8 +30,8 @@ class Login extends React.Component {
             if(res.data){
                 sessionStorage.setItem('userData', JSON.stringify(res.data))
                 this.setState({
-                    email: '',
-                    password: '',
+                    // email: '',
+                    // password: '',
                     redirectBool: true
                 })
             }
@@ -62,10 +62,10 @@ class Login extends React.Component {
                 <div className="loginForm">
                     <form onSubmit={this.handleLoginSubmit}>
                         <div className="emailSection">
-                            <input type="text" name="email" placeholder="Email" onChange={this.handleChange}/>
+                            <input type="text" name="email" placeholder="Email" onChange={this.handleChange} value={this.state.email}/>
                         </div>
                         <div className="passwordSection">
-                            <input type="password" name="password" placeholder="Password" onChange={this.handleChange}/>
+                            <input type="password" name="password" placeholder="Password" onChange={this.handleChange} value={this.state.password}/>
                         </div>
                         <div className="submitSection">
                             <button type="submit">Login</button>
